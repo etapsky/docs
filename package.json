@@ -1,0 +1,30 @@
+{
+  "name": "@etapsky/docs",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Etapsky Developer Documentation — docs.etapsky.com",
+  "author": "Yunus YILDIZ <yunus.yildiz@etapsky.com>",
+  "license": "BUSL-1.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.32.0",
+    "astro": "^5.0.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "overrides": {
+    "@astrojs/sitemap": "3.5.1",
+    "zod": "3.25.76"
+  }
+}

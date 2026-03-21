@@ -1,0 +1,154 @@
+/*
+ * Etapsky Design Tokens — Single Source of Truth
+ * ─────────────────────────────────────────────────────────────────
+ * To change any visual property (color, font, spacing, shadow),
+ * edit ONLY this file. All other style files consume these tokens.
+ *
+ * docs.etapsky.com — Etapsky Inc. 2026
+ */
+
+/* ────────────────────────────────────────────────────────────────
+   GOOGLE FONTS
+   ──────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&display=swap');
+
+/* ────────────────────────────────────────────────────────────────
+   BRAND COLORS
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  /* Primary */
+  --etk-purple-900: #3B0764;
+  --etk-purple-800: #4C1D95;
+  --etk-purple-700: #5B21B6;
+  --etk-purple-600: #7C3AED;   /* ← Brand primary */
+  --etk-purple-500: #8B5CF6;
+  --etk-purple-400: #A78BFA;
+  --etk-purple-300: #C4B5FD;
+  --etk-purple-100: #EDE9FE;
+  --etk-purple-50:  #F5F3FF;
+
+  /* Accent — Amber */
+  --etk-amber-900: #78350F;
+  --etk-amber-700: #B45309;
+  --etk-amber-500: #F59E0B;    /* ← Brand accent */
+  --etk-amber-400: #FBBF24;
+  --etk-amber-200: #FDE68A;
+  --etk-amber-100: #FEF3C7;
+
+  /* Orange (logo mark gradient) */
+  --etk-orange-500: #F97316;
+
+  /* ── Surface Scale (dark-first) ─────────────────────────────── */
+  --etk-surface-0:   #09090B;   /* Page background */
+  --etk-surface-1:   #0E0E10;   /* Subtle raised */
+  --etk-surface-2:   #111113;   /* Card surface */
+  --etk-surface-3:   #18181B;   /* Elevated card */
+  --etk-surface-4:   #1F1F22;   /* Modal/overlay */
+
+  /* ── Border Scale ────────────────────────────────────────────── */
+  --etk-border-0: #1E1E21;    /* Hairline */
+  --etk-border-1: #27272A;    /* Default border */
+  --etk-border-2: #3F3F46;    /* Prominent border */
+  --etk-border-3: #52525B;    /* Hover border */
+
+  /* ── Text Scale ──────────────────────────────────────────────── */
+  --etk-text-0: #FAFAFA;      /* Primary text */
+  --etk-text-1: #E4E4E7;      /* Secondary text */
+  --etk-text-2: #A1A1AA;      /* Muted text */
+  --etk-text-3: #71717A;      /* Subtle / placeholder */
+  --etk-text-4: #52525B;      /* Disabled text */
+
+  /* ── Semantic Colors ─────────────────────────────────────────── */
+  --etk-color-success: #22C55E;
+  --etk-color-warning: #F59E0B;
+  --etk-color-error:   #EF4444;
+  --etk-color-info:    #3B82F6;
+
+  /* ── Link ────────────────────────────────────────────────────── */
+  --etk-link:       var(--etk-purple-400);
+  --etk-link-hover: var(--etk-purple-300);
+
+  /* ────────────────────────────────────────────────────────────────
+     TYPOGRAPHY
+     ──────────────────────────────────────────────────────────────── */
+  --etk-font-sans:  'DM Sans', system-ui, -apple-system, sans-serif;
+  --etk-font-mono:  'DM Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --etk-font-serif: 'Fraunces', Georgia, serif;
+
+  /* Font sizes (fluid scale) */
+  --etk-text-xs:   0.75rem;    /* 12px */
+  --etk-text-sm:   0.875rem;   /* 14px */
+  --etk-text-base: 1rem;       /* 16px */
+  --etk-text-lg:   1.125rem;   /* 18px */
+  --etk-text-xl:   1.25rem;    /* 20px */
+  --etk-text-2xl:  1.5rem;     /* 24px */
+  --etk-text-3xl:  1.875rem;   /* 30px */
+  --etk-text-4xl:  2.25rem;    /* 36px */
+
+  /* Line heights */
+  --etk-leading-tight:  1.25;
+  --etk-leading-snug:   1.375;
+  --etk-leading-normal: 1.5;
+  --etk-leading-relaxed: 1.625;
+
+  /* Letter spacing */
+  --etk-tracking-tight:  -0.025em;
+  --etk-tracking-normal:  0em;
+  --etk-tracking-wide:    0.025em;
+  --etk-tracking-wider:   0.05em;
+  --etk-tracking-widest:  0.1em;
+
+  /* ────────────────────────────────────────────────────────────────
+     SPACING (8px base grid)
+     ──────────────────────────────────────────────────────────────── */
+  --etk-space-1:  0.25rem;   /* 4px */
+  --etk-space-2:  0.5rem;    /* 8px */
+  --etk-space-3:  0.75rem;   /* 12px */
+  --etk-space-4:  1rem;      /* 16px */
+  --etk-space-5:  1.25rem;   /* 20px */
+  --etk-space-6:  1.5rem;    /* 24px */
+  --etk-space-8:  2rem;      /* 32px */
+  --etk-space-10: 2.5rem;    /* 40px */
+  --etk-space-12: 3rem;      /* 48px */
+  --etk-space-16: 4rem;      /* 64px */
+
+  /* ────────────────────────────────────────────────────────────────
+     BORDER RADIUS
+     ──────────────────────────────────────────────────────────────── */
+  --etk-radius-xs: 2px;
+  --etk-radius-sm: 4px;
+  --etk-radius-md: 6px;
+  --etk-radius-lg: 8px;
+  --etk-radius-xl: 12px;
+  --etk-radius-2xl: 16px;
+  --etk-radius-full: 9999px;
+
+  /* ────────────────────────────────────────────────────────────────
+     SHADOWS
+     ──────────────────────────────────────────────────────────────── */
+  --etk-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --etk-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --etk-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --etk-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --etk-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --etk-shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.25);
+  --etk-shadow-glow-amber:  0 0 20px rgba(245, 158, 11, 0.15);
+
+  /* ────────────────────────────────────────────────────────────────
+     TRANSITIONS
+     ──────────────────────────────────────────────────────────────── */
+  --etk-transition-fast:   80ms ease;
+  --etk-transition-normal: 150ms ease;
+  --etk-transition-slow:   250ms ease;
+  --etk-transition-slower: 350ms ease;
+
+  /* ────────────────────────────────────────────────────────────────
+     Z-INDEX SCALE
+     ──────────────────────────────────────────────────────────────── */
+  --etk-z-base:    0;
+  --etk-z-raised:  1;
+  --etk-z-dropdown: 100;
+  --etk-z-sticky:  200;
+  --etk-z-modal:   300;
+  --etk-z-toast:   400;
+}

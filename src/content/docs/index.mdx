@@ -1,0 +1,68 @@
+---
+title: Etapsky Developer Documentation
+description: Developer documentation for the SDF (Smart Document Format) — the open format that embeds structured JSON alongside PDF in a single file.
+template: splash
+hero:
+  title: Smart Document Format
+  tagline: One file. Two layers. Zero re-keying. SDF combines PDF and structured JSON so your documents work for both humans and machines.
+  image:
+    file: ../../assets/hero-sdf.svg
+  actions:
+    - text: Quickstart — 5 minutes
+      link: /sdf/getting-started/quickstart/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub
+      link: https://github.com/etapsky/sdf
+      icon: external
+      variant: secondary
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## What is SDF?
+
+SDF (Smart Document Format) is an open standard that solves the PDF data-extraction problem. Every `.sdf` file is a ZIP archive containing a human-readable PDF and a machine-readable JSON — no OCR, no manual re-entry.
+
+<CardGrid>
+  <Card title="The Problem" icon="error">
+    Documents travel as PDF. The receiving system must OCR the text and manually re-key the data — slow, error-prone, expensive.
+  </Card>
+  <Card title="The Solution" icon="approve-check">
+    SDF bundles the structured JSON alongside the PDF. The receiving system reads `data.json` directly — zero extraction cost, zero errors.
+  </Card>
+  <Card title="Backward Compatible" icon="open-book">
+    Any PDF viewer opens the visual layer. SDF-unaware systems see a normal PDF. SDF-aware systems get the data too.
+  </Card>
+</CardGrid>
+
+## Start Building
+
+<CardGrid>
+  <LinkCard title="Quickstart" description="Produce your first .sdf file in 5 minutes." href="/sdf/getting-started/quickstart/" />
+  <LinkCard title="sdf-kit — TypeScript" description="The reference TypeScript implementation. Producer, reader, validator, signer." href="/sdf/sdf-kit/" />
+  <LinkCard title="Python SDK" description="Full-featured Python implementation on PyPI." href="/sdf/sdk-python/" />
+  <LinkCard title="SDF Server" description="Self-hosted REST server with queue, S3 storage, and ERP connectors." href="/sdf/sdf-server/" />
+</CardGrid>
+
+## Products
+
+<CardGrid>
+  <Card title="SDF — Smart Document Format" icon="document">
+    The open document format and its ecosystem: SDK, CLI, schema registry, server, integrations, and tooling. This is what you're reading about now.
+  </Card>
+  <Card title="More products coming" icon="rocket">
+    Etapsky is actively building additional developer tools. More products will be documented here as they reach public availability.
+  </Card>
+</CardGrid>
+
+## Ecosystem
+
+| Package | Version | Registry | Description |
+|---------|---------|----------|-------------|
+| `@etapsky/sdf-kit` | 0.2.2 | npm | Core TypeScript SDK |
+| `@etapsky/sdf-cli` | 0.3.0 | npm · Homebrew · Binary | Command-line tool |
+| `@etapsky/sdf-schema-registry` | 0.1.0 | npm | Schema versioning and migration |
+| `@etapsky/sdf-server-core` | 0.1.2 | npm | Self-hosted server framework |
+| `@etapsky/cloud-sdk` | 0.1.0 | npm | api.etapsky.com client |
+| `etapsky-sdf` | 0.1.1 | PyPI | Python SDK |
