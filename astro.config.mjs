@@ -20,6 +20,7 @@ export default defineConfig({
 
       social: {
         github:  'https://github.com/etapsky',
+        'x.com': 'https://x.com/etapsky',
         blueSky: 'https://bsky.app/profile/etapsky.bsky.social',
       },
 
