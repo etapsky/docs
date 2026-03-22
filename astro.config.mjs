@@ -34,6 +34,7 @@ export default defineConfig({
 
       components: {
         ThemeSelect: './src/components/ThemeSelect.astro',
+        SiteTitle:   './src/components/SiteTitle.astro',
       },
 
       expressiveCode: {

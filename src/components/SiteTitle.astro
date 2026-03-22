@@ -1,0 +1,121 @@
+---
+/**
+ * SiteTitle — Etapsky Docs header identity
+ *
+ * Logo + thin separator + "docs" monospace label.
+ * Design: restrained, developer-grade — DM Mono gradient text,
+ * 1px optical divider, smooth hover shimmer.
+ */
+---
+
+<a href="/" class="etk-site-title" aria-label="Etapsky Docs — Home">
+  <!-- Light mode logo -->
+  <img
+    class="etk-logo etk-logo--light"
+    src="/etapsky_logo.svg"
+    alt="Etapsky"
+    height="34"
+    loading="eager"
+    decoding="async"
+  />
+  <!-- Dark mode logo -->
+  <img
+    class="etk-logo etk-logo--dark"
+    src="/etapsky_logo_dark.svg"
+    alt="Etapsky"
+    height="34"
+    loading="eager"
+    decoding="async"
+  />
+
+  <span class="etk-sep" aria-hidden="true"></span>
+  <span class="etk-docs" aria-hidden="true">docs</span>
+</a>
+
+<style>
+  /* ── Container ──────────────────────────────────────────────── */
+  .etk-site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* ── Logo — theme switching ──────────────────────────────────── */
+  .etk-logo {
+    height: 34px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Default (dark): dark logo visible */
+  :root:not([data-theme='light']) .etk-logo--dark  { display: block; }
+  :root:not([data-theme='light']) .etk-logo--light { display: none;  }
+
+  /* Light mode: light logo visible */
+  :root[data-theme='light'] .etk-logo--dark  { display: none;  }
+  :root[data-theme='light'] .etk-logo--light { display: block; }
+
+  /* ── Divider ─────────────────────────────────────────────────── */
+  .etk-sep {
+    display: block;
+    width: 1px;
+    height: 16px;
+    background: currentColor;
+    opacity: 0.16;
+    margin: 0 12px;
+    flex-shrink: 0;
+    border-radius: 1px;
+  }
+
+  /* ── "docs" label ────────────────────────────────────────────── */
+  .etk-docs {
+    font-family: 'DM Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Code', monospace;
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    position: relative;
+    top: 0.5px; /* optical baseline correction */
+
+    /* Purple gradient — dark mode */
+    background: linear-gradient(125deg, #c4b5fd 0%, #a78bfa 55%, #9061f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    transition: background 200ms ease;
+  }
+
+  /* Light mode: deeper purple for contrast */
+  :root[data-theme='light'] .etk-docs {
+    background: linear-gradient(125deg, #7c3aed 0%, #6d28d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Hover: label brightens, sep gets slightly more visible ─── */
+  .etk-site-title:hover .etk-sep {
+    opacity: 0.28;
+    transition: opacity 200ms ease;
+  }
+
+  .etk-site-title:hover .etk-docs {
+    background: linear-gradient(125deg, #ddd6fe 0%, #c4b5fd 55%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :root[data-theme='light'] .etk-site-title:hover .etk-docs {
+    background: linear-gradient(125deg, #6d28d9 0%, #7c3aed 60%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
