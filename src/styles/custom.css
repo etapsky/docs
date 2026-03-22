@@ -627,3 +627,34 @@ starlight-toc a[aria-current='true'] {
 [data-theme='light'] ::-webkit-scrollbar-thumb:hover {
   background: var(--etk-purple-600);
 }
+
+/* ── Sidebar badges — light mode fix ─────────────────────────── */
+/* Dark mode: solid vibrant bg (purple/blue) with white text ✓   */
+/* Light mode: Starlight sets very light bg but KEEPS white text  */
+/* → Fix: tinted bg + high-contrast dark text (Apple system style) */
+:root[data-theme='light'] {
+  /* tip variant (purple) */
+  --sl-badge-tip-bg:     var(--etk-purple-100);   /* #EDE9FE — light purple tint */
+  --sl-badge-tip-border: var(--etk-purple-300);   /* #C4B5FD — visible rim */
+  --sl-badge-tip-text:   var(--etk-purple-700);   /* #5B21B6 — dark purple text */
+
+  /* note variant (blue) */
+  --sl-badge-note-bg:     #DBEAFE;                /* blue-100 */
+  --sl-badge-note-border: #93C5FD;                /* blue-300 */
+  --sl-badge-note-text:   #1D4ED8;                /* blue-700 */
+
+  /* caution variant (amber) */
+  --sl-badge-caution-bg:     var(--etk-amber-100);
+  --sl-badge-caution-border: var(--etk-amber-200);
+  --sl-badge-caution-text:   var(--etk-amber-900);
+
+  /* danger variant (red) */
+  --sl-badge-danger-bg:     #FEE2E2;
+  --sl-badge-danger-border: #FCA5A5;
+  --sl-badge-danger-text:   #B91C1C;
+
+  /* success variant (green) */
+  --sl-badge-success-bg:     #DCFCE7;
+  --sl-badge-success-border: #86EFAC;
+  --sl-badge-success-text:   #15803D;
+}
