@@ -92,7 +92,15 @@ export default defineConfig({
             { label: 'About',       link: '/company/' },
             { label: 'Products',    link: '/company/products/' },
             { label: 'Open Source', link: '/company/open-source/' },
-            { label: 'Changelog',   link: '/company/changelog/' },
+            { label: 'Changelog',   link: '/changelog/' },
+          ],
+        },
+
+        // ── API REFERENCE ─────────────────────────────────────────
+        {
+          label: 'API Reference',
+          items: [
+            { label: 'Overview',    link: '/api/' },
           ],
         },
 
