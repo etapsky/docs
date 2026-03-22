@@ -11,7 +11,7 @@ export default defineConfig({
       tagline: 'Smart Document Format — Developer Documentation',
 
       logo: {
-        light: './public/etapsky_logo_dark.svg',
+        light: './public/etapsky_logo.svg',
         dark:  './public/etapsky_logo_dark.svg',
         replacesTitle: true,
       },

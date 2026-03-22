@@ -203,7 +203,7 @@ header.header {
 
 /* Logo sizing */
 .site-title img {
-  height: 28px;
+  height: 36px;
   width: auto;
 }
 
@@ -505,6 +505,49 @@ starlight-toc a[aria-current='true'] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Hero action buttons — Apple-style compact ────────────────── */
+.hero .sl-link-button {
+  font-size: var(--etk-text-sm) !important;
+  font-weight: 500;
+  padding: 0.5rem 1.125rem !important;
+  border-radius: var(--etk-radius-full) !important;
+  gap: 0.35rem;
+  letter-spacing: 0.01em;
+  transition: background var(--etk-transition-fast),
+              border-color var(--etk-transition-fast),
+              box-shadow var(--etk-transition-fast),
+              color var(--etk-transition-fast);
+}
+
+/* Icon — smaller, tighter */
+.hero .sl-link-button svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Primary — solid purple, white text */
+.hero .sl-link-button.primary {
+  background: var(--etk-purple-600) !important;
+  border-color: var(--etk-purple-600) !important;
+  color: #fff !important;
+}
+.hero .sl-link-button.primary:hover {
+  background: var(--etk-purple-700) !important;
+  border-color: var(--etk-purple-700) !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Secondary — ghost, subtle border */
+.hero .sl-link-button.secondary {
+  background: transparent !important;
+  border-color: var(--etk-border-2) !important;
+  color: var(--etk-text-2) !important;
+}
+.hero .sl-link-button.secondary:hover {
+  border-color: var(--etk-border-3) !important;
+  color: var(--etk-text-0) !important;
 }
 
 /* ════════════════════════════════════════════════════════════════
