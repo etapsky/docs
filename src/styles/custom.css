@@ -514,6 +514,17 @@ starlight-toc a[aria-current='true'] {
    color tokens that need to shift for light-bg contrast.
    ════════════════════════════════════════════════════════════════ */
 
+/* ── GitHub / social icons — monochrome ──────────────────────── */
+/* Dark: white  |  Light: black */
+.social-icons a {
+  color: var(--etk-text-0) !important;
+  transition: color var(--etk-transition-fast), opacity var(--etk-transition-fast);
+  opacity: 0.75;
+}
+.social-icons a:hover {
+  opacity: 1;
+}
+
 /* ── Header — override the hardcoded rgba(9,9,11) dark value ──── */
 [data-theme='light'] header.header {
   background-color: rgba(255, 255, 255, 0.90);
