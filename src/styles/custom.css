@@ -819,32 +819,46 @@ html[data-has-hero][data-theme='light'] body {
 }
 
 /* ── Sidebar badges — light mode fix ─────────────────────────── */
-/* Dark mode: solid vibrant bg (purple/blue) with white text ✓   */
-/* Light mode: Starlight sets very light bg but KEEPS white text  */
-/* → Fix: tinted bg + high-contrast dark text (Apple system style) */
-:root[data-theme='light'] {
-  /* tip variant (purple) */
-  --sl-badge-tip-bg:     var(--etk-purple-100);   /* #EDE9FE — light purple tint */
-  --sl-badge-tip-border: var(--etk-purple-300);   /* #C4B5FD — visible rim */
-  --sl-badge-tip-text:   var(--etk-purple-700);   /* #5B21B6 — dark purple text */
+/* Starlight does not expose CSS variables for badge colors.      */
+/* Direct selector overrides are required.                        */
+:root[data-theme='light'] .sl-badge[data-variant='tip'],
+:root[data-theme='light'] .sl-badge.tip {
+  background-color: #EDE9FE !important;
+  border-color:     #C4B5FD !important;
+  color:            #5B21B6 !important;
+}
 
-  /* note variant (blue) */
-  --sl-badge-note-bg:     #DBEAFE;                /* blue-100 */
-  --sl-badge-note-border: #93C5FD;                /* blue-300 */
-  --sl-badge-note-text:   #1D4ED8;                /* blue-700 */
+:root[data-theme='light'] .sl-badge[data-variant='note'],
+:root[data-theme='light'] .sl-badge.note {
+  background-color: #DBEAFE !important;
+  border-color:     #93C5FD !important;
+  color:            #1D4ED8 !important;
+}
 
-  /* caution variant (amber) */
-  --sl-badge-caution-bg:     var(--etk-amber-100);
-  --sl-badge-caution-border: var(--etk-amber-200);
-  --sl-badge-caution-text:   var(--etk-amber-900);
+:root[data-theme='light'] .sl-badge[data-variant='caution'],
+:root[data-theme='light'] .sl-badge.caution {
+  background-color: #FEF3C7 !important;
+  border-color:     #FDE68A !important;
+  color:            #92400E !important;
+}
 
-  /* danger variant (red) */
-  --sl-badge-danger-bg:     #FEE2E2;
-  --sl-badge-danger-border: #FCA5A5;
-  --sl-badge-danger-text:   #B91C1C;
+:root[data-theme='light'] .sl-badge[data-variant='danger'],
+:root[data-theme='light'] .sl-badge.danger {
+  background-color: #FEE2E2 !important;
+  border-color:     #FCA5A5 !important;
+  color:            #B91C1C !important;
+}
 
-  /* success variant (green) */
-  --sl-badge-success-bg:     #DCFCE7;
-  --sl-badge-success-border: #86EFAC;
-  --sl-badge-success-text:   #15803D;
+:root[data-theme='light'] .sl-badge[data-variant='success'],
+:root[data-theme='light'] .sl-badge.success {
+  background-color: #DCFCE7 !important;
+  border-color:     #86EFAC !important;
+  color:            #15803D !important;
+}
+
+:root[data-theme='light'] .sl-badge[data-variant='default'],
+:root[data-theme='light'] .sl-badge:not([data-variant]) {
+  background-color: #F4F4F5 !important;
+  border-color:     #D4D4D8 !important;
+  color:            #3F3F46 !important;
 }
