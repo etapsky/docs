@@ -165,8 +165,32 @@ header.header {
   background-color: rgba(9, 9, 11, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--etk-border-0);
-  box-shadow: 0 1px 0 rgba(124, 58, 237, 0.08);
+  border-bottom: none;
+  box-shadow: none;
+  transition: background-color 250ms ease,
+              backdrop-filter 250ms ease,
+              box-shadow 250ms ease;
+}
+
+/* ── Hero page: transparent at top, frosted on scroll ─────────── */
+html[data-has-hero] header.header {
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html[data-has-hero].is-scrolled header.header {
+  background-color: rgba(9, 9, 11, 0.40);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: none;
+}
+
+html[data-has-hero][data-theme='light'].is-scrolled header.header {
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  box-shadow: none;
 }
 
 /* Stable 3-column header: logo | search (center) | icons
@@ -671,11 +695,20 @@ html[data-has-hero][data-theme='light'] body {
   opacity: 1;
 }
 
-/* ── Header — override the hardcoded rgba(9,9,11) dark value ──── */
+/* Bluesky — orijinal marka rengi (#0085FF) */
+.social-icons a[href*="bsky.app"] {
+  color: #0085FF !important;
+  opacity: 0.85;
+}
+.social-icons a[href*="bsky.app"]:hover {
+  opacity: 1;
+}
+
+/* ── Header light mode — non-hero pages ───────────────────────── */
 [data-theme='light'] header.header {
   background-color: rgba(255, 255, 255, 0.90);
-  border-bottom-color: var(--etk-border-0);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 /* ── Sidebar active link — dark purple for light bg ───────────── */

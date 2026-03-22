@@ -1,0 +1,9 @@
+---
+// Adds .is-scrolled to <html> when page is scrolled — enables frosted header
+---
+<script>
+  const root = document.documentElement;
+  const onScroll = () => root.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

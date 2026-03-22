@@ -19,7 +19,8 @@ export default defineConfig({
       favicon: '/favicon.svg',
 
       social: {
-        github: 'https://github.com/etapsky',
+        github:  'https://github.com/etapsky',
+        blueSky: 'https://bsky.app/profile/etapsky.bsky.social',
       },
 
       editLink: {
@@ -47,6 +48,11 @@ export default defineConfig({
       },
 
       head: [
+        // Social icon links — open in new tab
+        {
+          tag: 'script',
+          content: `document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.social-icons a').forEach(a=>{a.setAttribute('target','_blank');a.setAttribute('rel','noopener noreferrer');});});`,
+        },
         // Open Graph
         {
           tag: 'meta',
