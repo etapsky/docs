@@ -169,6 +169,38 @@ header.header {
   box-shadow: 0 1px 0 rgba(124, 58, 237, 0.08);
 }
 
+/* Stable 3-column header: logo | search (center) | icons
+   Starlight's default grid shifts with sidebar width.
+   1fr auto 1fr = equal flanks → search always truly centered. */
+@media (min-width: 50rem) {
+  header.header .header {
+    display: grid !important;
+    grid-template-columns: 1fr minmax(14rem, 24rem) 1fr !important;
+    align-items: center !important;
+  }
+
+  header.header .header .title-wrapper {
+    justify-self: start;
+  }
+
+  /* Search bar — middle column */
+  header.header .header > div:nth-child(2) {
+    justify-self: center;
+    width: 100%;
+    max-width: 42rem;
+  }
+
+  /* Override Starlight's hardcoded 22rem on the search button */
+  header.header button[data-open-modal] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  header.header .header .right-group {
+    justify-self: end;
+  }
+}
+
 /* Logo sizing */
 .site-title img {
   height: 28px;
