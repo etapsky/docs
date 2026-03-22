@@ -294,6 +294,12 @@ nav.sidebar-nav .group-label {
   text-align: left;
 }
 
+/* Starlight padding-inline-start: 0 override'ını geri al */
+.sl-markdown-content th:first-child,
+.sl-markdown-content td:first-child {
+  padding-inline-start: var(--etk-space-4);
+}
+
 .sl-markdown-content th:last-child {
   border-right: none;
 }
