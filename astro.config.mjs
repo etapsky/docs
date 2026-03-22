@@ -39,7 +39,7 @@ export default defineConfig({
         themes: ['one-dark-pro'],
         styleOverrides: {
           borderRadius: '8px',
-          borderColor: 'var(--etk-border-1)',
+          borderColor: '#3e4452',
           frames: {
             frameBoxShadowCssValue: 'none',
           },

@@ -236,7 +236,6 @@ nav.sidebar-nav .group-label {
    ════════════════════════════════════════════════════════════════ */
 .expressive-code {
   border-radius: var(--etk-radius-lg) !important;
-  border: 1px solid var(--etk-border-1);
   box-shadow: var(--etk-shadow-md);
   overflow: hidden;
 }
@@ -567,7 +566,6 @@ starlight-toc a[aria-current='true'] {
   color: #9da5b4 !important;              /* one-dark-pro muted fg */
 }
 [data-theme='light'] .expressive-code {
-  border-color: #3e4452 !important;       /* one-dark-pro border */
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
