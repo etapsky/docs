@@ -485,6 +485,77 @@ starlight-toc a[aria-current='true'] {
 }
 
 /* ════════════════════════════════════════════════════════════════
+   SPLASH PAGE — Portal-style linear grid background
+   Only applies when data-has-hero is present (index/splash page).
+   ════════════════════════════════════════════════════════════════ */
+html[data-has-hero] body {
+  background-image:
+    /* Bottom fade — grid dissolves into page bg */
+    linear-gradient(to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--etk-surface-0) 100%
+    ),
+    /* Brand diagonal gradient — purple top-left → amber bottom-right */
+    linear-gradient(135deg,
+      rgba(124, 58, 237, 0.16) 0%,
+      rgba(124, 58, 237, 0.06) 35%,
+      transparent                50%,
+      rgba(245, 158, 11, 0.05)  75%,
+      rgba(245, 158, 11, 0.10) 100%
+    ),
+    /* Vertical grid lines */
+    repeating-linear-gradient(90deg,
+      transparent                0px,
+      transparent                59px,
+      rgba(124, 58, 237, 0.065) 59px,
+      rgba(124, 58, 237, 0.065) 60px
+    ),
+    /* Horizontal grid lines */
+    repeating-linear-gradient(0deg,
+      transparent                0px,
+      transparent                59px,
+      rgba(124, 58, 237, 0.065) 59px,
+      rgba(124, 58, 237, 0.065) 60px
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    60px 60px,
+    60px 60px;
+}
+
+/* Light mode — softer lines, darker brand colors */
+html[data-has-hero][data-theme='light'] body {
+  background-image:
+    linear-gradient(to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--etk-surface-0) 100%
+    ),
+    linear-gradient(135deg,
+      rgba(124, 58, 237, 0.07) 0%,
+      rgba(124, 58, 237, 0.03) 35%,
+      transparent               50%,
+      rgba(245, 158, 11, 0.02) 75%,
+      rgba(245, 158, 11, 0.05) 100%
+    ),
+    repeating-linear-gradient(90deg,
+      transparent              0px,
+      transparent              59px,
+      rgba(124, 58, 237, 0.06) 59px,
+      rgba(124, 58, 237, 0.06) 60px
+    ),
+    repeating-linear-gradient(0deg,
+      transparent              0px,
+      transparent              59px,
+      rgba(124, 58, 237, 0.06) 59px,
+      rgba(124, 58, 237, 0.06) 60px
+    );
+  background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* ════════════════════════════════════════════════════════════════
    HERO SECTION (landing page)
    ════════════════════════════════════════════════════════════════ */
 .hero {
