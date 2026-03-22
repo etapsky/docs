@@ -2,9 +2,7 @@
 /**
  * SiteTitle — Etapsky Docs header identity
  *
- * Logo + thin separator + "docs" monospace label.
- * Design: restrained, developer-grade — DM Mono gradient text,
- * 1px optical divider, smooth hover shimmer.
+ * Logo + thin separator + "docs" monospace chip (tinted bg + purple border).
  */
 ---
 
@@ -72,50 +70,66 @@
     border-radius: 1px;
   }
 
-  /* ── "docs" label ────────────────────────────────────────────── */
+  /* ── "docs" label — chip: tinted bg + chroma border ─────────────── */
   .etk-docs {
     font-family: 'DM Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Code', monospace;
-    font-size: 0.8125rem; /* 13px */
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.03em;
-    line-height: 1;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
     position: relative;
-    top: 0.5px; /* optical baseline correction */
+    top: 0.5px;
 
-    /* Purple gradient — dark mode */
-    background: linear-gradient(125deg, #c4b5fd 0%, #a78bfa 55%, #9061f9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    padding: 0.28em 0.55em 0.3em;
+    border-radius: 6px;
+    border: 1.5px solid #a78bfa;
+    color: #ede9fe;
+    background:
+      linear-gradient(145deg, rgba(124, 58, 237, 0.35) 0%, rgba(91, 33, 182, 0.22) 100%);
+    box-shadow:
+      0 0 0 1px rgba(167, 139, 250, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
-    transition: background 200ms ease;
+    -webkit-text-fill-color: unset;
+    background-clip: border-box;
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease,
+      background 200ms ease,
+      color 200ms ease;
   }
 
-  /* Light mode: deeper purple for contrast */
   :root[data-theme='light'] .etk-docs {
-    background: linear-gradient(125deg, #7c3aed 0%, #6d28d9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #5b21b6;
+    border-color: #7c3aed;
+    background: linear-gradient(180deg, #f5f3ff 0%, #ede9fe 100%);
+    box-shadow:
+      0 0 0 1px rgba(124, 58, 237, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
-  /* ── Hover: label brightens, sep gets slightly more visible ─── */
+  /* ── Hover: label + sep ─────────────────────────────────────── */
   .etk-site-title:hover .etk-sep {
     opacity: 0.28;
     transition: opacity 200ms ease;
   }
 
   .etk-site-title:hover .etk-docs {
-    background: linear-gradient(125deg, #ddd6fe 0%, #c4b5fd 55%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    border-color: #c4b5fd;
+    color: #f5f3ff;
+    background:
+      linear-gradient(145deg, rgba(139, 92, 246, 0.45) 0%, rgba(109, 40, 217, 0.28) 100%);
+    box-shadow:
+      0 0 0 1px rgba(196, 181, 253, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   :root[data-theme='light'] .etk-site-title:hover .etk-docs {
-    background: linear-gradient(125deg, #6d28d9 0%, #7c3aed 60%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #4c1d95;
+    border-color: #6d28d9;
+    background: linear-gradient(180deg, #faf5ff 0%, #e9d5ff 100%);
+    box-shadow:
+      0 0 0 1px rgba(124, 58, 237, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 </style>

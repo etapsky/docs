@@ -449,49 +449,70 @@ nav.sidebar-nav .group-label {
   text-transform: none !important;
   border-radius: var(--etk-radius-sm);
   padding: 0.1em 0.45em;
+  border-style: solid !important;
+  border-width: 1.5px !important;
+  box-sizing: border-box;
 }
 
-/* Dark mode — vivid colored borders per variant */
-:root[data-theme='dark'] .sl-badge[data-variant='tip'],
+/* Dark / default theme — vivid colored borders per variant */
+:root:not([data-theme='light']) .sl-badge.tip,
 :root[data-theme='dark'] .sl-badge.tip {
-  background-color: rgba(124, 58, 237, 0.18) !important;
-  border-color:     #7C3AED !important;
-  color:            #C4B5FD !important;
+  background-color: rgba(124, 58, 237, 0.2) !important;
+  border-color: #A78BFA !important;
+  color: #DDD6FE !important;
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-:root[data-theme='dark'] .sl-badge[data-variant='note'],
+:root:not([data-theme='light']) .sl-badge.note,
 :root[data-theme='dark'] .sl-badge.note {
-  background-color: rgba(59, 130, 246, 0.15) !important;
-  border-color:     #3B82F6 !important;
-  color:            #93C5FD !important;
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-color: #60A5FA !important;
+  color: #BFDBFE !important;
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-:root[data-theme='dark'] .sl-badge[data-variant='caution'],
+:root:not([data-theme='light']) .sl-badge.caution,
 :root[data-theme='dark'] .sl-badge.caution {
-  background-color: rgba(245, 158, 11, 0.14) !important;
-  border-color:     #F59E0B !important;
-  color:            #FCD34D !important;
+  background-color: rgba(245, 158, 11, 0.16) !important;
+  border-color: #FBBF24 !important;
+  color: #FEF3C7 !important;
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-:root[data-theme='dark'] .sl-badge[data-variant='danger'],
+:root:not([data-theme='light']) .sl-badge.danger,
 :root[data-theme='dark'] .sl-badge.danger {
-  background-color: rgba(239, 68, 68, 0.14) !important;
-  border-color:     #EF4444 !important;
-  color:            #FCA5A5 !important;
+  background-color: rgba(239, 68, 68, 0.16) !important;
+  border-color: #F87171 !important;
+  color: #FECACA !important;
+  box-shadow:
+    0 0 0 1px rgba(248, 113, 113, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-:root[data-theme='dark'] .sl-badge[data-variant='success'],
+:root:not([data-theme='light']) .sl-badge.success,
 :root[data-theme='dark'] .sl-badge.success {
-  background-color: rgba(34, 197, 94, 0.14) !important;
-  border-color:     #22C55E !important;
-  color:            #86EFAC !important;
+  background-color: rgba(34, 197, 94, 0.16) !important;
+  border-color: #4ADE80 !important;
+  color: #DCFCE7 !important;
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-:root[data-theme='dark'] .sl-badge[data-variant='default'],
-:root[data-theme='dark'] .sl-badge:not([data-variant]) {
-  background-color: rgba(161, 161, 170, 0.12) !important;
-  border-color:     #71717A !important;
-  color:            #A1A1AA !important;
+:root:not([data-theme='light']) .sl-badge.default,
+:root[data-theme='dark'] .sl-badge.default {
+  background-color: rgba(161, 161, 170, 0.14) !important;
+  border-color: #A1A1AA !important;
+  color: #E4E4E7 !important;
+  box-shadow:
+    0 0 0 1px rgba(161, 161, 170, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -865,46 +886,58 @@ html[data-has-hero][data-theme='light'] body {
 /* ── Sidebar badges — light mode fix ─────────────────────────── */
 /* Starlight does not expose CSS variables for badge colors.      */
 /* Direct selector overrides are required.                        */
-:root[data-theme='light'] .sl-badge[data-variant='tip'],
 :root[data-theme='light'] .sl-badge.tip {
   background-color: #EDE9FE !important;
-  border-color:     #C4B5FD !important;
-  color:            #5B21B6 !important;
+  border-color: #7C3AED !important;
+  color: #5B21B6 !important;
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme='light'] .sl-badge[data-variant='note'],
 :root[data-theme='light'] .sl-badge.note {
-  background-color: #DBEAFE !important;
-  border-color:     #93C5FD !important;
-  color:            #1D4ED8 !important;
+  background-color: #EFF6FF !important;
+  border-color: #2563EB !important;
+  color: #1D4ED8 !important;
+  box-shadow:
+    0 0 0 1px rgba(37, 99, 235, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme='light'] .sl-badge[data-variant='caution'],
 :root[data-theme='light'] .sl-badge.caution {
-  background-color: #FEF3C7 !important;
-  border-color:     #FDE68A !important;
-  color:            #92400E !important;
+  background-color: #FFFBEB !important;
+  border-color: #D97706 !important;
+  color: #92400E !important;
+  box-shadow:
+    0 0 0 1px rgba(217, 119, 6, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme='light'] .sl-badge[data-variant='danger'],
 :root[data-theme='light'] .sl-badge.danger {
-  background-color: #FEE2E2 !important;
-  border-color:     #FCA5A5 !important;
-  color:            #B91C1C !important;
+  background-color: #FEF2F2 !important;
+  border-color: #DC2626 !important;
+  color: #B91C1C !important;
+  box-shadow:
+    0 0 0 1px rgba(220, 38, 38, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme='light'] .sl-badge[data-variant='success'],
 :root[data-theme='light'] .sl-badge.success {
-  background-color: #DCFCE7 !important;
-  border-color:     #86EFAC !important;
-  color:            #15803D !important;
+  background-color: #F0FDF4 !important;
+  border-color: #16A34A !important;
+  color: #15803D !important;
+  box-shadow:
+    0 0 0 1px rgba(22, 163, 74, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme='light'] .sl-badge[data-variant='default'],
-:root[data-theme='light'] .sl-badge:not([data-variant]) {
+:root[data-theme='light'] .sl-badge.default {
   background-color: #F4F4F5 !important;
-  border-color:     #D4D4D8 !important;
-  color:            #3F3F46 !important;
+  border-color: #71717A !important;
+  color: #3F3F46 !important;
+  box-shadow:
+    0 0 0 1px rgba(113, 113, 122, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 /* ── Structural borders — purple tint in light mode ────────────── */
