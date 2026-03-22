@@ -138,7 +138,7 @@ export default defineConfig({
         },
         {
           label: 'sdf-kit',
-          badge: { text: '0.2.2', variant: 'tip' },
+          badge: { text: 'v0.2.2', variant: 'tip' },
           collapsed: true,
           items: [
             { label: 'Overview',   link: '/sdf/sdf-kit/' },
@@ -151,7 +151,7 @@ export default defineConfig({
         },
         {
           label: 'sdf-cli',
-          badge: { text: '0.3.0', variant: 'tip' },
+          badge: { text: 'v0.3.0', variant: 'tip' },
           collapsed: true,
           items: [
             { label: 'Overview',  link: '/sdf/sdf-cli/' },
@@ -167,7 +167,7 @@ export default defineConfig({
         },
         {
           label: 'Schema Registry',
-          badge: { text: '0.1.0', variant: 'note' },
+          badge: { text: 'v0.1.0', variant: 'note' },
           collapsed: true,
           items: [
             { label: 'Overview',  link: '/sdf/sdf-schema-registry/' },
@@ -191,7 +191,7 @@ export default defineConfig({
         },
         {
           label: 'Python SDK',
-          badge: { text: 'PyPI 0.1.1', variant: 'tip' },
+          badge: { text: 'v0.1.1 · PyPI', variant: 'tip' },
           collapsed: true,
           items: [
             { label: 'Overview',   link: '/sdf/sdk-python/' },
@@ -204,7 +204,7 @@ export default defineConfig({
         },
         {
           label: 'Cloud SDK',
-          badge: { text: '0.1.0', variant: 'note' },
+          badge: { text: 'v0.1.0', variant: 'note' },
           collapsed: true,
           items: [
             { label: 'Overview',        link: '/sdf/cloud-sdk/' },

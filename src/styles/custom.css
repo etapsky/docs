@@ -450,6 +450,49 @@ nav.sidebar-nav .group-label {
   padding: 0.1em 0.45em;
 }
 
+/* Dark mode — vivid colored borders per variant */
+:root[data-theme='dark'] .sl-badge[data-variant='tip'],
+:root[data-theme='dark'] .sl-badge.tip {
+  background-color: rgba(124, 58, 237, 0.18) !important;
+  border-color:     #7C3AED !important;
+  color:            #C4B5FD !important;
+}
+
+:root[data-theme='dark'] .sl-badge[data-variant='note'],
+:root[data-theme='dark'] .sl-badge.note {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  border-color:     #3B82F6 !important;
+  color:            #93C5FD !important;
+}
+
+:root[data-theme='dark'] .sl-badge[data-variant='caution'],
+:root[data-theme='dark'] .sl-badge.caution {
+  background-color: rgba(245, 158, 11, 0.14) !important;
+  border-color:     #F59E0B !important;
+  color:            #FCD34D !important;
+}
+
+:root[data-theme='dark'] .sl-badge[data-variant='danger'],
+:root[data-theme='dark'] .sl-badge.danger {
+  background-color: rgba(239, 68, 68, 0.14) !important;
+  border-color:     #EF4444 !important;
+  color:            #FCA5A5 !important;
+}
+
+:root[data-theme='dark'] .sl-badge[data-variant='success'],
+:root[data-theme='dark'] .sl-badge.success {
+  background-color: rgba(34, 197, 94, 0.14) !important;
+  border-color:     #22C55E !important;
+  color:            #86EFAC !important;
+}
+
+:root[data-theme='dark'] .sl-badge[data-variant='default'],
+:root[data-theme='dark'] .sl-badge:not([data-variant]) {
+  background-color: rgba(161, 161, 170, 0.12) !important;
+  border-color:     #71717A !important;
+  color:            #A1A1AA !important;
+}
+
 /* ════════════════════════════════════════════════════════════════
    LINKS
    ════════════════════════════════════════════════════════════════ */
