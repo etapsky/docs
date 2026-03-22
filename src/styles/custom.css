@@ -572,6 +572,22 @@ starlight-toc a[aria-current='true'] {
   background: linear-gradient(135deg, var(--etk-purple-900) 0%, var(--etk-purple-600) 60%, var(--etk-amber-700) 100%);
 }
 
+/* ── Terminal frame dots — macOS renkli noktalar ─────────────────
+   EC varsayılanı tek renkli mask + 0.15 opacity (neredeyse görünmez).
+   mask-image: none yapıp yerini renkli SVG'ye bırakıyoruz.
+   ─────────────────────────────────────────────────────────────── */
+.expressive-code .frame.is-terminal .header::before {
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23FF5F57'/%3E%3Ccircle cx='28' cy='8' r='7' fill='%23FEBC2E'/%3E%3Ccircle cx='48' cy='8' r='7' fill='%2328C840'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: 1 !important;
+  width: 2.4rem !important;
+  height: 0.7rem !important;
+}
+
 /* ── Code blocks — lock to one-dark-pro dark values in light mode ─ */
 /* Our etk tokens flip to light in light mode, but code blocks must  */
 /* stay dark because one-dark-pro syntax colors need a dark canvas.  */
