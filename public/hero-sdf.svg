@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+  <!-- Background -->
+  <rect width="800" height="480" fill="#0F0B1E"/>
+
+  <!-- Subtle grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E1535" stroke-width="1"/>
+    </pattern>
+    <filter id="glow-purple">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-amber">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#7C3AED" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" fill="url(#grid)"/>
+
+  <!-- SDF file container (ZIP) — center left -->
+  <g transform="translate(120, 100)">
+    <!-- ZIP file body -->
+    <rect x="0" y="30" width="180" height="220" rx="10" fill="#1A1030" stroke="#7C3AED" stroke-width="2" filter="url(#shadow)"/>
+    <!-- ZIP file tab -->
+    <rect x="0" y="30" width="180" height="50" rx="10" fill="#2D1A5E" stroke="#7C3AED" stroke-width="2"/>
+    <!-- .sdf label -->
+    <text x="90" y="62" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="18" font-weight="700" fill="#7C3AED" filter="url(#glow-purple)">.sdf</text>
+    <!-- ZIP stripes decoration -->
+    <rect x="20" y="88" width="140" height="4" rx="2" fill="#7C3AED" opacity="0.3"/>
+    <rect x="20" y="100" width="100" height="4" rx="2" fill="#7C3AED" opacity="0.2"/>
+    <!-- File name -->
+    <text x="90" y="135" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="12" fill="#A78BFA">document.sdf</text>
+    <!-- ZIP label -->
+    <text x="90" y="160" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">ZIP archive</text>
+    <!-- Zip tooth decoration -->
+    <path d="M70 185 L90 175 L110 185 L90 195 Z" fill="#7C3AED" opacity="0.5"/>
+  </g>
+
+  <!-- Arrow from SDF to files -->
+  <g>
+    <!-- Main arrow line -->
+    <line x1="320" y1="210" x2="390" y2="210" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6,3"/>
+    <!-- Arrow branches -->
+    <line x1="390" y1="210" x2="390" y2="100" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="210" x2="390" y2="160" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="210" x2="390" y2="260" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="210" x2="390" y2="320" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <!-- Branch to each file -->
+    <line x1="390" y1="100" x2="430" y2="100" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="160" x2="430" y2="160" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="260" x2="430" y2="260" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <line x1="390" y1="320" x2="430" y2="320" stroke="#7C3AED" stroke-width="2" opacity="0.6"/>
+    <!-- Arrowheads -->
+    <polygon points="427,95 435,100 427,105" fill="#7C3AED" opacity="0.8"/>
+    <polygon points="427,155 435,160 427,165" fill="#7C3AED" opacity="0.8"/>
+    <polygon points="427,255 435,260 427,265" fill="#7C3AED" opacity="0.8"/>
+    <polygon points="427,315 435,320 427,325" fill="#7C3AED" opacity="0.8"/>
+  </g>
+
+  <!-- visual.pdf card -->
+  <g transform="translate(435, 68)">
+    <rect width="290" height="62" rx="8" fill="#1A1030" stroke="#7C3AED" stroke-width="1.5"/>
+    <rect width="290" height="62" rx="8" fill="#7C3AED" opacity="0.07"/>
+    <!-- PDF icon -->
+    <rect x="14" y="14" width="30" height="34" rx="3" fill="#7C3AED" opacity="0.3"/>
+    <text x="14" y="46" font-family="'SF Mono', monospace" font-size="9" fill="#7C3AED" opacity="0.8">PDF</text>
+    <!-- Label -->
+    <text x="58" y="28" font-family="'SF Mono', 'Fira Code', monospace" font-size="13" font-weight="600" fill="#A78BFA">visual.pdf</text>
+    <text x="58" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Human-readable layer · any PDF viewer</text>
+  </g>
+
+  <!-- data.json card -->
+  <g transform="translate(435, 128)">
+    <rect width="290" height="62" rx="8" fill="#1A1030" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="290" height="62" rx="8" fill="#F59E0B" opacity="0.06"/>
+    <!-- JSON icon -->
+    <rect x="14" y="14" width="30" height="34" rx="3" fill="#F59E0B" opacity="0.25"/>
+    <text x="16" y="36" font-family="'SF Mono', monospace" font-size="11" fill="#F59E0B" opacity="0.9">{}</text>
+    <!-- Label -->
+    <text x="58" y="28" font-family="'SF Mono', 'Fira Code', monospace" font-size="13" font-weight="600" fill="#FCD34D">data.json</text>
+    <text x="58" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Machine-readable layer · structured data</text>
+  </g>
+
+  <!-- schema.json card -->
+  <g transform="translate(435, 228)">
+    <rect width="290" height="62" rx="8" fill="#1A1030" stroke="#6D28D9" stroke-width="1.5"/>
+    <rect width="290" height="62" rx="8" fill="#6D28D9" opacity="0.07"/>
+    <!-- Schema icon -->
+    <rect x="14" y="14" width="30" height="34" rx="3" fill="#6D28D9" opacity="0.3"/>
+    <text x="15" y="36" font-family="'SF Mono', monospace" font-size="9" fill="#A78BFA" opacity="0.9">SCH</text>
+    <!-- Label -->
+    <text x="58" y="28" font-family="'SF Mono', 'Fira Code', monospace" font-size="13" font-weight="600" fill="#C4B5FD">schema.json</text>
+    <text x="58" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">JSON Schema Draft 2020-12 · embedded</text>
+  </g>
+
+  <!-- meta.json card -->
+  <g transform="translate(435, 288)">
+    <rect width="290" height="62" rx="8" fill="#1A1030" stroke="#4C1D95" stroke-width="1.5"/>
+    <rect width="290" height="62" rx="8" fill="#4C1D95" opacity="0.1"/>
+    <!-- Meta icon -->
+    <rect x="14" y="14" width="30" height="34" rx="3" fill="#4C1D95" opacity="0.4"/>
+    <text x="14" y="36" font-family="'SF Mono', monospace" font-size="9" fill="#8B5CF6" opacity="0.9">META</text>
+    <!-- Label -->
+    <text x="58" y="28" font-family="'SF Mono', 'Fira Code', monospace" font-size="13" font-weight="600" fill="#8B5CF6">meta.json</text>
+    <text x="58" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Identity · provenance · format version</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="430" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#4B5563">
+    One file · Two layers · Zero re-keying
+  </text>
+
+  <!-- Etapsky brand mark — bottom right -->
+  <text x="760" y="460" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#3D2D6B">etapsky.com</text>
+
+  <!-- Ambient glow effects -->
+  <ellipse cx="210" cy="210" rx="120" ry="120" fill="#7C3AED" opacity="0.04"/>
+  <ellipse cx="580" cy="190" rx="180" ry="100" fill="#7C3AED" opacity="0.03"/>
+</svg>

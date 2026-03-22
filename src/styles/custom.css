@@ -47,6 +47,34 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
+   LIGHT MODE — STARLIGHT VARIABLE REMAPPING
+   Starlight inverts gray-1..6 in light mode (gray-1=darkest, black=white).
+   We mirror that inversion using our light-mode etk tokens.
+   ════════════════════════════════════════════════════════════════ */
+:root[data-theme='light'] {
+  /* ── Accent — darker purples for contrast on light bg ─────────── */
+  --sl-color-accent-high: var(--etk-purple-700);   /* dark purple → for text  */
+  --sl-color-accent:      var(--etk-purple-600);
+  --sl-color-accent-low:  var(--etk-purple-100);   /* light purple → for bg   */
+
+  /* ── Gray scale — inverted for light mode ─────────────────────── */
+  /* In light mode Starlight maps: black→bg-white, white→text-dark  */
+  --sl-color-white: var(--etk-text-0);       /* #09090B — darkest text         */
+  --sl-color-gray-1: var(--etk-text-1);      /* #18181B — primary text         */
+  --sl-color-gray-2: var(--etk-text-2);      /* #3F3F46 — secondary text       */
+  --sl-color-gray-3: var(--etk-text-3);      /* #71717A — muted                */
+  --sl-color-gray-4: var(--etk-border-2);    /* #A1A1AA — medium               */
+  --sl-color-gray-5: var(--etk-border-1);    /* #D4D4D8 — subtle border        */
+  --sl-color-gray-6: var(--etk-surface-2);   /* #F4F4F5 — very light surface   */
+  --sl-color-gray-7: var(--etk-surface-1);   /* #FAFAFA — nav/sidebar bg       */
+  --sl-color-black:  var(--etk-surface-0);   /* #FFFFFF — page background      */
+
+  /* ── Inline code — softer purple tint, darker text ────────────── */
+  --sl-color-bg-inline-code: rgba(124, 58, 237, 0.07);
+  --sl-color-text-code:      var(--etk-purple-700);
+}
+
+/* ════════════════════════════════════════════════════════════════
    GLOBAL BASE
    ════════════════════════════════════════════════════════════════ */
 *,
@@ -459,4 +487,105 @@ starlight-toc a[aria-current='true'] {
   .sl-markdown-content h2 {
     font-size: var(--etk-text-xl);
   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   LIGHT MODE — ELEMENT OVERRIDES
+   These fix elements that use hardcoded dark values or brand
+   color tokens that need to shift for light-bg contrast.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Header — override the hardcoded rgba(9,9,11) dark value ──── */
+[data-theme='light'] header.header {
+  background-color: rgba(255, 255, 255, 0.90);
+  border-bottom-color: var(--etk-border-0);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ── Sidebar active link — dark purple for light bg ───────────── */
+[data-theme='light'] .sidebar-content a[aria-current='page'],
+[data-theme='light'] .sidebar-content a[data-current-page] {
+  color: var(--etk-purple-700);
+  background-color: rgba(124, 58, 237, 0.08);
+  border-left-color: var(--etk-purple-600);
+}
+
+/* ── Sidebar hover — keep subtle on light ─────────────────────── */
+[data-theme='light'] .sidebar-content a:hover {
+  background-color: rgba(124, 58, 237, 0.06);
+}
+
+/* ── TOC links — dark purple active/hover ─────────────────────── */
+[data-theme='light'] starlight-toc a:hover,
+[data-theme='light'] starlight-toc a[aria-current='true'] {
+  color: var(--etk-purple-700);
+}
+
+/* ── Inline code border ───────────────────────────────────────── */
+[data-theme='light'] .sl-markdown-content :not(pre) > code {
+  border-color: rgba(124, 58, 237, 0.15);
+}
+
+/* ── Admonition titles — darker semantic colors for light bg ──── */
+[data-theme='light'] .sl-markdown-content .starlight-aside--note .starlight-aside__title {
+  color: #1D4ED8;   /* blue-700 */
+}
+[data-theme='light'] .sl-markdown-content .starlight-aside--tip .starlight-aside__title {
+  color: #15803D;   /* green-700 */
+}
+[data-theme='light'] .sl-markdown-content .starlight-aside--caution .starlight-aside__title {
+  color: #B45309;   /* amber-700 */
+}
+[data-theme='light'] .sl-markdown-content .starlight-aside--danger .starlight-aside__title {
+  color: #DC2626;   /* red-600 */
+}
+
+/* ── Links — slightly darker underline in light mode ─────────── */
+[data-theme='light'] .sl-markdown-content a {
+  text-decoration-color: rgba(91, 33, 182, 0.3);
+}
+[data-theme='light'] .sl-markdown-content a:hover {
+  text-decoration-color: var(--etk-purple-700);
+}
+
+/* ── Hero gradient text — dark-to-purple for light bg ─────────── */
+[data-theme='light'] .gradient-text {
+  background: linear-gradient(135deg, var(--etk-purple-900) 0%, var(--etk-purple-600) 60%, var(--etk-amber-700) 100%);
+}
+
+/* ── Code blocks — keep dark bg in light mode (one-dark-pro) ──── */
+/* Remove our surface-1 override so ExpressiveCode keeps its theme */
+[data-theme='light'] .expressive-code pre {
+  background-color: unset !important;
+}
+[data-theme='light'] .expressive-code .header {
+  background-color: unset !important;
+  border-bottom-color: unset !important;
+}
+[data-theme='light'] .expressive-code .title {
+  color: unset !important;
+}
+[data-theme='light'] .expressive-code {
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Table hover — visible on light bg ───────────────────────── */
+[data-theme='light'] .sl-markdown-content tbody tr:hover td {
+  background-color: rgba(124, 58, 237, 0.04);
+}
+
+/* ── Pagination hover ─────────────────────────────────────────── */
+[data-theme='light'] .pagination-links a:hover {
+  background-color: rgba(124, 58, 237, 0.04);
+}
+
+/* ── Card hover glow — softer on light ───────────────────────── */
+[data-theme='light'] .card:hover {
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.10);
+}
+
+/* ── Scrollbar — adjust for light bg ─────────────────────────── */
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: var(--etk-purple-600);
 }

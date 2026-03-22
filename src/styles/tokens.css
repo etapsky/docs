@@ -152,3 +152,43 @@
   --etk-z-modal:   300;
   --etk-z-toast:   400;
 }
+
+/* ────────────────────────────────────────────────────────────────
+   LIGHT MODE TOKEN OVERRIDES
+   Inverts surface/border/text scales for light backgrounds.
+   Brand colors (purple, amber, orange) stay the same.
+   ──────────────────────────────────────────────────────────────── */
+[data-theme='light'] {
+  /* ── Surface Scale (light) ───────────────────────────────────── */
+  --etk-surface-0:   #FFFFFF;   /* Page background */
+  --etk-surface-1:   #FAFAFA;   /* Subtle raised */
+  --etk-surface-2:   #F4F4F5;   /* Card surface */
+  --etk-surface-3:   #E4E4E7;   /* Elevated card */
+  --etk-surface-4:   #D4D4D8;   /* Modal/overlay */
+
+  /* ── Border Scale (light) ────────────────────────────────────── */
+  --etk-border-0: #E4E4E7;    /* Hairline */
+  --etk-border-1: #D4D4D8;    /* Default border */
+  --etk-border-2: #A1A1AA;    /* Prominent border */
+  --etk-border-3: #71717A;    /* Hover border */
+
+  /* ── Text Scale (light) — dark for readability ───────────────── */
+  --etk-text-0: #09090B;      /* Primary text */
+  --etk-text-1: #18181B;      /* Secondary text */
+  --etk-text-2: #3F3F46;      /* Muted text */
+  --etk-text-3: #71717A;      /* Subtle / placeholder */
+  --etk-text-4: #A1A1AA;      /* Disabled text */
+
+  /* ── Link (dark purple for light bg contrast) ────────────────── */
+  --etk-link:       var(--etk-purple-700);
+  --etk-link-hover: var(--etk-purple-600);
+
+  /* ── Shadows (softer for light mode) ────────────────────────── */
+  --etk-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --etk-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --etk-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --etk-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --etk-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --etk-shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.12);
+  --etk-shadow-glow-amber:  0 0 20px rgba(245, 158, 11, 0.08);
+}
