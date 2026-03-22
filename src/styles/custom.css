@@ -266,12 +266,15 @@ nav.sidebar-nav .group-label {
    TABLES
    ════════════════════════════════════════════════════════════════ */
 .sl-markdown-content table {
+  display: table;               /* override Starlight's display: block */
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;    /* separate + spacing:0 = collapse görünümü + border-radius desteği */
+  border-spacing: 0;
   font-size: var(--etk-text-sm);
   border: 1px solid var(--etk-border-1);
   border-radius: var(--etk-radius-lg);
   overflow: hidden;
+  box-shadow: var(--etk-shadow-sm);
 }
 
 .sl-markdown-content thead {
@@ -287,14 +290,24 @@ nav.sidebar-nav .group-label {
   color: var(--etk-text-2);
   padding: var(--etk-space-3) var(--etk-space-4);
   border-bottom: 1px solid var(--etk-border-1);
+  border-right: 1px solid var(--etk-border-0);
   text-align: left;
+}
+
+.sl-markdown-content th:last-child {
+  border-right: none;
 }
 
 .sl-markdown-content td {
   padding: var(--etk-space-3) var(--etk-space-4);
   border-bottom: 1px solid var(--etk-border-0);
+  border-right: 1px solid var(--etk-border-0);
   color: var(--etk-text-1);
   vertical-align: top;
+}
+
+.sl-markdown-content td:last-child {
+  border-right: none;
 }
 
 .sl-markdown-content tbody tr:last-child td {
@@ -303,6 +316,7 @@ nav.sidebar-nav .group-label {
 
 .sl-markdown-content tbody tr:hover td {
   background-color: rgba(124, 58, 237, 0.04);
+  transition: background-color var(--etk-transition-fast);
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -569,7 +583,10 @@ starlight-toc a[aria-current='true'] {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
-/* ── Table hover — visible on light bg ───────────────────────── */
+/* ── Table borders — slightly stronger in light mode ─────────── */
+[data-theme='light'] .sl-markdown-content table {
+  border-color: var(--etk-border-1);
+}
 [data-theme='light'] .sl-markdown-content tbody tr:hover td {
   background-color: rgba(124, 58, 237, 0.04);
 }
