@@ -553,21 +553,22 @@ starlight-toc a[aria-current='true'] {
   background: linear-gradient(135deg, var(--etk-purple-900) 0%, var(--etk-purple-600) 60%, var(--etk-amber-700) 100%);
 }
 
-/* ── Code blocks — keep dark bg in light mode (one-dark-pro) ──── */
-/* Remove our surface-1 override so ExpressiveCode keeps its theme */
+/* ── Code blocks — lock to one-dark-pro dark values in light mode ─ */
+/* Our etk tokens flip to light in light mode, but code blocks must  */
+/* stay dark because one-dark-pro syntax colors need a dark canvas.  */
 [data-theme='light'] .expressive-code pre {
-  background-color: unset !important;
+  background-color: #282c34 !important;   /* one-dark-pro --ec-codeBg */
 }
 [data-theme='light'] .expressive-code .header {
-  background-color: unset !important;
-  border-bottom-color: unset !important;
+  background-color: #21252b !important;   /* one-dark-pro tab bar bg */
+  border-bottom-color: #181a1f !important;
 }
 [data-theme='light'] .expressive-code .title {
-  color: unset !important;
+  color: #9da5b4 !important;              /* one-dark-pro muted fg */
 }
 [data-theme='light'] .expressive-code {
-  border-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #3e4452 !important;       /* one-dark-pro border */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
 /* ── Table hover — visible on light bg ───────────────────────── */
