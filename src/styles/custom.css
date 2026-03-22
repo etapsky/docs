@@ -446,6 +446,7 @@ nav.sidebar-nav .group-label {
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0;
+  text-transform: none !important;
   border-radius: var(--etk-radius-sm);
   padding: 0.1em 0.45em;
 }
