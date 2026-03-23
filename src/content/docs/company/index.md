@@ -56,11 +56,11 @@ All public code lives at [github.com/etapsky](https://github.com/etapsky).
 
 **Yunus YILDIZ** is the founder of Etapsky Inc. He designed the SDF format specification, built the initial implementation across all packages, and leads product development.
 
-- GitHub: [@yunusyildiz](https://github.com/yunusyildiz)
+- GitHub: [@yunusyildiz-dev](https://github.com/yunusyildiz-dev)
 - Company: [etapsky.com](https://etapsky.com)
 
 ## Contact
 
 - Website: [etapsky.com](https://etapsky.com)
 - GitHub Issues: [github.com/etapsky/sdf/issues](https://github.com/etapsky/sdf/issues)
-- Email: hello@etapsky.com
+- Email: contact@etapsky.com
