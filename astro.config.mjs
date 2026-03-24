@@ -34,8 +34,9 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
 
       components: {
-        ThemeSelect: './src/components/ThemeSelect.astro',
-        SiteTitle:   './src/components/SiteTitle.astro',
+        ThemeSelect:  './src/components/ThemeSelect.astro',
+        SiteTitle:    './src/components/SiteTitle.astro',
+        SocialIcons:  './src/components/PortalLinks.astro',
       },
 
       expressiveCode: {
