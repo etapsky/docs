@@ -10,12 +10,14 @@
  *   - Auth cookie set on .etapsky.com domain
  */
 import Default from '@astrojs/starlight/components/SocialIcons.astro';
+const apiUrl    = import.meta.env.PUBLIC_API_URL    ?? 'https://api.etapsky.com'
+const portalUrl = import.meta.env.PUBLIC_PORTAL_URL ?? 'https://portal.etapsky.com'
 ---
 
 <div class="etk-portal-links" role="group" aria-label="Etapsky Portal">
   <a
     id="etk-portal-btn"
-    href="https://portal.etapsky.com"
+    href={portalUrl}
     class="etk-plink"
     aria-label="Open Etapsky Portal"
   >
@@ -176,7 +178,7 @@ import Default from '@astrojs/starlight/components/SocialIcons.astro';
   }
 </style>
 
-<script>
+<script define:vars={{ apiUrl, portalUrl }}>
   interface MeResponse {
     user?: { name?: string; email?: string }
     name?: string
@@ -185,7 +187,7 @@ import Default from '@astrojs/starlight/components/SocialIcons.astro';
 
   async function upgradePortalBtn() {
     try {
-      const res = await fetch('https://api.etapsky.com/v1/auth/me', {
+      const res = await fetch(`${apiUrl}/v1/auth/me`, {
         credentials: 'include',
       })
       if (!res.ok) return
@@ -197,7 +199,7 @@ import Default from '@astrojs/starlight/components/SocialIcons.astro';
       const inner = document.getElementById('etk-portal-inner')
       if (!btn || !inner) return
 
-      btn.setAttribute('href', 'https://portal.etapsky.com/dashboard')
+      btn.setAttribute('href', `${portalUrl}/dashboard`)
       btn.setAttribute('aria-label', 'Go to Dashboard')
 
       const initials = name
