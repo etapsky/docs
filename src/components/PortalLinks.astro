@@ -179,12 +179,6 @@ const portalUrl = import.meta.env.PUBLIC_PORTAL_URL ?? 'https://portal.etapsky.c
 </style>
 
 <script define:vars={{ apiUrl, portalUrl }}>
-  interface MeResponse {
-    user?: { name?: string; email?: string }
-    name?: string
-    email?: string
-  }
-
   async function upgradePortalBtn() {
     try {
       const res = await fetch(`${apiUrl}/v1/auth/me`, {
@@ -204,7 +198,7 @@ const portalUrl = import.meta.env.PUBLIC_PORTAL_URL ?? 'https://portal.etapsky.c
 
       const initials = name
         .split(' ')
-        .map((w: string) => w[0] ?? '')
+        .map((w) => w[0] ?? '')
         .join('')
         .slice(0, 2)
         .toUpperCase() || '?'
