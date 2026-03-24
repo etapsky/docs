@@ -14,6 +14,7 @@ const apiUrl    = import.meta.env.PUBLIC_API_URL    ?? 'https://api.etapsky.com'
 const portalUrl = import.meta.env.PUBLIC_PORTAL_URL ?? 'https://portal.etapsky.com'
 ---
 
+<div id="etk-portal-config" data-api-url={apiUrl} data-portal-url={portalUrl} hidden></div>
 <div class="etk-portal-links" role="group" aria-label="Etapsky Portal">
   <a
     id="etk-portal-btn"
@@ -178,18 +179,25 @@ const portalUrl = import.meta.env.PUBLIC_PORTAL_URL ?? 'https://portal.etapsky.c
   }
 </style>
 
-<script define:vars={{ apiUrl, portalUrl }}>
+<script>
+  interface MeResponse {
+    user?: { name?: string; email?: string }
+    name?: string
+  }
+
   async function upgradePortalBtn() {
+    const config = document.getElementById('etk-portal-config') as HTMLElement | null
+    const apiUrl    = config?.dataset.apiUrl    ?? 'https://api.etapsky.com'
+    const portalUrl = config?.dataset.portalUrl ?? 'https://portal.etapsky.com'
+
     try {
-      const res = await fetch(`${apiUrl}/v1/auth/me`, {
-        credentials: 'include',
-      })
+      const res = await fetch(`${apiUrl}/v1/auth/me`, { credentials: 'include' })
       if (!res.ok) return
 
-      const data: MeResponse = await res.json()
+      const data = await res.json() as MeResponse
       const name = data.user?.name ?? data.name ?? ''
 
-      const btn = document.getElementById('etk-portal-btn')
+      const btn   = document.getElementById('etk-portal-btn')
       const inner = document.getElementById('etk-portal-inner')
       if (!btn || !inner) return
 
