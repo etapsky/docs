@@ -83,6 +83,59 @@
   box-sizing: border-box;
 }
 
+/* Browser chrome + form controls follow theme immediately */
+html {
+  color-scheme: dark;
+}
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* Canvas matches header/sidebar token timing on theme toggle */
+body {
+  transition: background-color var(--etk-theme-transition);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.header,
+  html[data-has-hero] header.header,
+  .sidebar-pane,
+  body,
+  .sl-badge,
+  .sl-markdown-content h2,
+  .sl-markdown-content table,
+  .sl-markdown-content th,
+  .sl-markdown-content td,
+  .sl-markdown-content :not(pre) > code,
+  .sl-markdown-content .starlight-aside,
+  .expressive-code .header,
+  .expressive-code,
+  .pagination-links a,
+  .card,
+  .right-sidebar,
+  .right-sidebar .right-sidebar-panel,
+  mobile-starlight-toc nav,
+  mobile-starlight-toc summary,
+  mobile-starlight-toc .toggle,
+  mobile-starlight-toc .dropdown,
+  site-search dialog,
+  header.header button[data-open-modal],
+  header.header button[data-open-modal] kbd,
+  .social-icons::after,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-track,
+  .sl-markdown-content thead,
+  .sl-markdown-content hr:not(:where(.not-content *)),
+  .sl-markdown-content blockquote:not(:where(.not-content *)),
+  .sl-markdown-content pre:not(:where(.not-content *)),
+  .sl-markdown-content details:not(:where(.not-content *)),
+  .sl-steps > li::before,
+  .sl-steps > li::after,
+  .sidebar-content ul ul li {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 ::selection {
   background-color: rgba(124, 58, 237, 0.3);
   color: var(--etk-text-0);
@@ -95,13 +148,63 @@
 }
 ::-webkit-scrollbar-track {
   background: var(--etk-surface-1);
+  transition: background-color var(--etk-theme-transition);
 }
 ::-webkit-scrollbar-thumb {
+  /* Inset “frame” so thumb/track edge transitions with theme (WebKit) */
   background: var(--etk-border-2);
+  border: 2px solid var(--etk-surface-1);
+  background-clip: padding-box;
   border-radius: var(--etk-radius-full);
+  transition:
+    background-color var(--etk-theme-transition),
+    border-color var(--etk-theme-transition);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--etk-purple-700);
+  border-color: var(--etk-surface-1);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   THEME BORDERS — Starlight markdown + sidebar hairlines + steps
+   Starlight flips --sl-color-* via data-theme; it does not ship
+   animated theme crossfades — that is custom CSS on our side.
+   ════════════════════════════════════════════════════════════════ */
+
+/* markdown.css: hr (--sl-color-hairline), blockquote, plain pre, details */
+.sl-markdown-content hr:not(:where(.not-content *)) {
+  transition: border-color var(--etk-theme-transition);
+}
+
+.sl-markdown-content blockquote:not(:where(.not-content *)) {
+  transition: border-color var(--etk-theme-transition);
+}
+
+.sl-markdown-content pre:not(:where(.not-content *)) {
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition);
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) {
+  transition: border-color var(--etk-theme-transition);
+}
+
+/* Steps.astro — numbered bullet + vertical guide (--sl-color-hairline-light) */
+.sl-steps > li::before {
+  transition:
+    background-color var(--etk-theme-transition),
+    color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
+}
+
+.sl-steps > li::after {
+  transition: background-color var(--etk-theme-transition);
+}
+
+/* SidebarSublist.astro — nested ul ul li hairline */
+.sidebar-content ul ul li {
+  transition: border-color var(--etk-theme-transition);
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -128,6 +231,9 @@ h1 {
   border-bottom: 1px solid var(--etk-border-1);
   padding-bottom: var(--etk-space-3);
   margin-top: var(--etk-space-12);
+  transition:
+    color var(--etk-theme-transition),
+    border-bottom-color var(--etk-theme-transition);
 }
 
 .sl-markdown-content h3 {
@@ -162,14 +268,13 @@ h1 {
    SITE HEADER
    ════════════════════════════════════════════════════════════════ */
 header.header {
-  background-color: rgba(9, 9, 11, 0.85);
+  background-color: var(--etk-header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: none;
   box-shadow: none;
-  transition: background-color 250ms ease,
-              backdrop-filter 250ms ease,
-              box-shadow 250ms ease;
+  /* Only background-color: animating backdrop-filter feels laggy vs body tokens */
+  transition: background-color var(--etk-theme-transition);
 }
 
 /* ── Hero page: transparent at top, frosted on scroll ─────────── */
@@ -177,20 +282,21 @@ html[data-has-hero] header.header {
   background-color: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  transition: background-color var(--etk-theme-transition),
+    backdrop-filter 0ms,
+    -webkit-backdrop-filter 0ms;
 }
 
 html[data-has-hero].is-scrolled header.header {
-  background-color: rgba(9, 9, 11, 0.40);
+  background-color: var(--etk-header-bg-hero-scrolled);
   backdrop-filter: blur(32px) saturate(180%);
   -webkit-backdrop-filter: blur(32px) saturate(180%);
   box-shadow: none;
 }
 
 html[data-has-hero][data-theme='light'].is-scrolled header.header {
-  background-color: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
-  box-shadow: none;
 }
 
 /* Stable 3-column header: logo | search (center) | icons
@@ -231,12 +337,37 @@ html[data-has-hero][data-theme='light'].is-scrolled header.header {
   width: auto;
 }
 
+/* Search (Starlight Search.astro) — border/bg track theme like header */
+@media (min-width: 50rem) {
+  header.header button[data-open-modal] {
+    transition:
+      border-color var(--etk-theme-transition),
+      background-color var(--etk-theme-transition),
+      color var(--etk-theme-transition);
+  }
+  header.header button[data-open-modal] kbd {
+    transition:
+      background-color var(--etk-theme-transition),
+      color var(--etk-theme-transition);
+  }
+}
+
+site-search dialog {
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
+}
+
 /* ════════════════════════════════════════════════════════════════
    SIDEBAR
    ════════════════════════════════════════════════════════════════ */
 .sidebar-pane {
   background-color: var(--etk-surface-0);
   border-right: 1px solid var(--etk-border-0);
+  transition:
+    background-color var(--etk-theme-transition),
+    border-color var(--etk-theme-transition);
 }
 
 /* Group label (e.g. "SDF", "Getting Started") */
@@ -255,7 +386,10 @@ nav.sidebar-nav .group-label {
   font-size: var(--etk-text-sm);
   color: var(--etk-text-2);
   border-radius: var(--etk-radius-md);
-  transition: color var(--etk-transition-fast), background-color var(--etk-transition-fast);
+  transition:
+    color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    border-color var(--etk-theme-transition);
   text-decoration: none;
 }
 
@@ -285,6 +419,10 @@ nav.sidebar-nav .group-label {
   border: 1px solid rgba(124, 58, 237, 0.2);
   border-radius: var(--etk-radius-sm);
   padding: 0.1em 0.4em;
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    color var(--etk-theme-transition);
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -294,6 +432,7 @@ nav.sidebar-nav .group-label {
   border-radius: var(--etk-radius-lg) !important;
   box-shadow: var(--etk-shadow-md);
   overflow: hidden;
+  transition: box-shadow var(--etk-theme-transition);
 }
 
 .expressive-code .frame {
@@ -304,6 +443,9 @@ nav.sidebar-nav .group-label {
 .expressive-code .header {
   background-color: var(--etk-surface-3) !important;
   border-bottom: 1px solid var(--etk-border-1) !important;
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition);
 }
 
 /* File title */
@@ -331,10 +473,14 @@ nav.sidebar-nav .group-label {
   border-radius: var(--etk-radius-lg);
   overflow: hidden;
   box-shadow: var(--etk-shadow-sm);
+  transition:
+    border-color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
 }
 
 .sl-markdown-content thead {
   background-color: var(--etk-surface-3);
+  transition: background-color var(--etk-theme-transition);
 }
 
 .sl-markdown-content th {
@@ -348,6 +494,7 @@ nav.sidebar-nav .group-label {
   border-bottom: 1px solid var(--etk-border-1);
   border-right: 1px solid var(--etk-border-0);
   text-align: left;
+  transition: border-color var(--etk-theme-transition);
 }
 
 /* Starlight padding-inline-start: 0 override'ını geri al */
@@ -366,6 +513,7 @@ nav.sidebar-nav .group-label {
   border-right: 1px solid var(--etk-border-0);
   color: var(--etk-text-1);
   vertical-align: top;
+  transition: border-color var(--etk-theme-transition);
 }
 
 .sl-markdown-content td:last-child {
@@ -390,6 +538,9 @@ nav.sidebar-nav .group-label {
   border-left-style: solid;
   padding: var(--etk-space-4) var(--etk-space-5);
   margin: var(--etk-space-6) 0;
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition);
 }
 
 /* Note — blue */
@@ -452,6 +603,11 @@ nav.sidebar-nav .group-label {
   border-style: solid !important;
   border-width: 1.5px !important;
   box-sizing: border-box;
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
 }
 
 /* Dark / default theme — vivid colored borders per variant */
@@ -523,7 +679,9 @@ nav.sidebar-nav .group-label {
   text-decoration-line: underline;
   text-decoration-color: rgba(167, 139, 250, 0.3);
   text-underline-offset: 3px;
-  transition: color var(--etk-transition-fast), text-decoration-color var(--etk-transition-fast);
+  transition:
+    color var(--etk-theme-transition),
+    text-decoration-color var(--etk-theme-transition);
 }
 
 .sl-markdown-content a:hover {
@@ -537,7 +695,9 @@ nav.sidebar-nav .group-label {
 .pagination-links a {
   border-color: var(--etk-border-1) !important;
   border-radius: var(--etk-radius-lg) !important;
-  transition: border-color var(--etk-transition-normal), background-color var(--etk-transition-normal);
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition);
 }
 
 .pagination-links a:hover {
@@ -547,16 +707,57 @@ nav.sidebar-nav .group-label {
 
 /* ════════════════════════════════════════════════════════════════
    TABLE OF CONTENTS (right sidebar)
+   Starlight puts border-inline-start on .right-sidebar (TwoColumnContent),
+   not on .right-sidebar-panel — transition must target the fixed column.
    ════════════════════════════════════════════════════════════════ */
+@media (min-width: 72rem) {
+  .right-sidebar {
+    border-inline-start-color: var(--etk-border-0);
+    transition: border-color var(--etk-theme-transition);
+  }
+}
+
+/* Remove duplicate inner border; parent carries the hairline */
 .right-sidebar .right-sidebar-panel {
-  border-left: 1px solid var(--etk-border-0);
+  border-left: none;
+}
+
+.right-sidebar .right-sidebar-panel :is(h2) {
+  transition: color var(--etk-theme-transition);
+}
+
+/* Mobile “On this page” bar — borders from MobileTableOfContents.astro */
+mobile-starlight-toc nav {
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition);
+}
+
+mobile-starlight-toc summary {
+  transition: border-color var(--etk-theme-transition);
+}
+
+mobile-starlight-toc .toggle {
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    color var(--etk-theme-transition);
+}
+
+mobile-starlight-toc .dropdown {
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
 }
 
 starlight-toc a {
   font-size: var(--etk-text-sm);
   color: var(--etk-text-3);
   text-decoration: none;
-  transition: color var(--etk-transition-fast);
+  transition:
+    color var(--etk-theme-transition),
+    border-color var(--etk-theme-transition);
 }
 
 starlight-toc a:hover,
@@ -675,10 +876,11 @@ html[data-has-hero][data-theme='light'] body {
   border-radius: var(--etk-radius-full) !important;
   gap: 0.35rem;
   letter-spacing: 0.01em;
-  transition: background var(--etk-transition-fast),
-              border-color var(--etk-transition-fast),
-              box-shadow var(--etk-transition-fast),
-              color var(--etk-transition-fast);
+  transition:
+    background var(--etk-theme-transition),
+    border-color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition),
+    color var(--etk-theme-transition);
 }
 
 /* Icon — smaller, tighter */
@@ -717,7 +919,10 @@ html[data-has-hero][data-theme='light'] body {
   border-color: var(--etk-border-1) !important;
   background-color: var(--etk-surface-2) !important;
   border-radius: var(--etk-radius-xl) !important;
-  transition: border-color var(--etk-transition-normal), box-shadow var(--etk-transition-normal);
+  transition:
+    border-color var(--etk-theme-transition),
+    background-color var(--etk-theme-transition),
+    box-shadow var(--etk-theme-transition);
 }
 
 .card:hover {
@@ -751,9 +956,14 @@ html[data-has-hero][data-theme='light'] body {
 
 /* ── GitHub / social icons — monochrome ──────────────────────── */
 /* Dark: white  |  Light: black */
+.social-icons::after {
+  transition: border-color var(--etk-theme-transition);
+}
 .social-icons a {
   color: var(--etk-text-0) !important;
-  transition: color var(--etk-transition-fast), opacity var(--etk-transition-fast);
+  transition:
+    color var(--etk-theme-transition),
+    opacity var(--etk-theme-transition);
   opacity: 0.75;
 }
 .social-icons a:hover {
@@ -767,13 +977,6 @@ html[data-has-hero][data-theme='light'] body {
 }
 .social-icons a[href*="bsky.app"]:hover {
   opacity: 1;
-}
-
-/* ── Header light mode — non-hero pages ───────────────────────── */
-[data-theme='light'] header.header {
-  background-color: rgba(255, 255, 255, 0.90);
-  border-bottom: none;
-  box-shadow: none;
 }
 
 /* ── Sidebar active link — dark purple for light bg ───────────── */
@@ -952,9 +1155,9 @@ html[data-has-hero][data-theme='light'] body {
   border-bottom-color: rgba(124, 58, 237, 0.2);
 }
 
-/* Right sidebar (TOC) left border */
-[data-theme='light'] .right-sidebar .right-sidebar-panel {
-  border-left-color: rgba(124, 58, 237, 0.18) !important;
+/* Right TOC column — same border as Starlight .right-sidebar */
+[data-theme='light'] .right-sidebar {
+  border-inline-start-color: rgba(124, 58, 237, 0.18) !important;
 }
 
 /* Table outer border + cell borders */

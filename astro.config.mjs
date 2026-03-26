@@ -34,6 +34,7 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
 
       components: {
+        PageFrame:    './src/components/PageFrame.astro',
         ThemeSelect:  './src/components/ThemeSelect.astro',
         SiteTitle:    './src/components/SiteTitle.astro',
         SocialIcons:  './src/components/PortalLinks.astro',

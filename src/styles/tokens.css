@@ -138,9 +138,16 @@
      TRANSITIONS
      ──────────────────────────────────────────────────────────────── */
   --etk-transition-fast:   80ms ease;
-  --etk-transition-normal: 150ms ease;
+  /** Same easing as --etk-theme-transition so incidental uses stay in sync */
+  --etk-transition-normal: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --etk-transition-slow:   250ms ease;
   --etk-transition-slower: 350ms ease;
+  /** Single timing for theme: bg, text, borders — no 80ms vs 150ms mismatch */
+  --etk-theme-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Frosted nav — single source; flips with [data-theme] */
+  --etk-header-bg: rgba(9, 9, 11, 0.88);
+  --etk-header-bg-hero-scrolled: rgba(9, 9, 11, 0.4);
 
   /* ────────────────────────────────────────────────────────────────
      Z-INDEX SCALE
@@ -191,4 +198,7 @@
   --etk-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
   --etk-shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.12);
   --etk-shadow-glow-amber:  0 0 20px rgba(245, 158, 11, 0.08);
+
+  --etk-header-bg: rgba(255, 255, 255, 0.92);
+  --etk-header-bg-hero-scrolled: rgba(255, 255, 255, 0.45);
 }

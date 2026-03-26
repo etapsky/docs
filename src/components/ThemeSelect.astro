@@ -34,7 +34,9 @@
     color: var(--sl-color-gray-1);
     cursor: pointer;
     border-radius: var(--etk-radius-md, 6px);
-    transition: color 80ms ease, background-color 80ms ease;
+    transition:
+      color var(--etk-theme-transition, 150ms cubic-bezier(0.4, 0, 0.2, 1)),
+      background-color var(--etk-theme-transition, 150ms cubic-bezier(0.4, 0, 0.2, 1));
     padding: 0;
   }
 

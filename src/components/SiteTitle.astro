@@ -6,22 +6,28 @@
  */
 ---
 
-<a href="/" class="etk-site-title" aria-label="Etapsky Docs — Home">
+<a
+	href="/"
+	class="etk-site-title"
+	aria-label="Etapsky Docs — Home"
+	transition:persist="etk-site-title"
+	transition:animate="none"
+>
   <!-- Light mode logo -->
   <img
     class="etk-logo etk-logo--light"
-    src="/etapsky_logo.svg"
+    src="/etapsky_horizonral_logo.svg"
     alt="Etapsky"
-    height="34"
+    height="40"
     loading="eager"
     decoding="async"
   />
   <!-- Dark mode logo -->
   <img
     class="etk-logo etk-logo--dark"
-    src="/etapsky_logo_dark.svg"
+    src="/etapsky_horizonral_logo.svg"
     alt="Etapsky"
-    height="34"
+    height="40"
     loading="eager"
     decoding="async"
   />
@@ -44,17 +50,20 @@
 
   /* ── Logo — theme switching ──────────────────────────────────── */
   .etk-logo {
-    height: 34px;
+    height: 40px;
     width: auto;
+    max-height: 40px;
     display: block;
     flex-shrink: 0;
+    object-fit: contain;
+    object-position: left center;
   }
 
-  /* Default (dark): dark logo visible */
-  :root:not([data-theme='light']) .etk-logo--dark  { display: block; }
+  /* Default (dark): dark logo visible, inverted to #EADDBF */
+  :root:not([data-theme='light']) .etk-logo--dark  { display: block; filter: invert(1); }
   :root:not([data-theme='light']) .etk-logo--light { display: none;  }
 
-  /* Light mode: light logo visible */
+  /* Light mode: light logo visible, default #152240 */
   :root[data-theme='light'] .etk-logo--dark  { display: none;  }
   :root[data-theme='light'] .etk-logo--light { display: block; }
 
@@ -93,10 +102,10 @@
     -webkit-text-fill-color: unset;
     background-clip: border-box;
     transition:
-      border-color 200ms ease,
-      box-shadow 200ms ease,
-      background 200ms ease,
-      color 200ms ease;
+      border-color var(--etk-theme-transition, 150ms ease),
+      box-shadow var(--etk-theme-transition, 150ms ease),
+      background var(--etk-theme-transition, 150ms ease),
+      color var(--etk-theme-transition, 150ms ease);
   }
 
   :root[data-theme='light'] .etk-docs {
@@ -111,7 +120,7 @@
   /* ── Hover: label + sep ─────────────────────────────────────── */
   .etk-site-title:hover .etk-sep {
     opacity: 0.28;
-    transition: opacity 200ms ease;
+    transition: opacity var(--etk-theme-transition, 150ms ease);
   }
 
   .etk-site-title:hover .etk-docs {
