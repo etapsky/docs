@@ -57,7 +57,7 @@ sdf convert data.json schema.json \
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   convert  data.json  schema.json
 ────────────────────────────────────────────────────────────

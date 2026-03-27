@@ -8,7 +8,7 @@ sidebar:
 
 `@etapsky/sdf-cli` is the official command-line tool for working with Smart Document Format files. Use it to inspect documents, validate structure, sign and verify authenticity, convert data to `.sdf`, and interact with the schema registry.
 
-**Version:** `0.3.0` &nbsp;·&nbsp; **License:** MIT
+**Version:** `0.3.2` &nbsp;·&nbsp; **License:** MIT
 
 ## Installation
 
@@ -52,7 +52,7 @@ bunx sdf --help
 
 ```bash title="Terminal"
 sdf --version
-# @etapsky/sdf-cli 0.3.0
+# @etapsky/sdf-cli 0.3.2
 ```
 
 ## Commands

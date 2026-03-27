@@ -50,7 +50,7 @@ The SDF ecosystem consists of six published packages and two supporting tools.
 
 Commands: `inspect`, `validate`, `sign`, `verify`, `keygen`, `wrap`, `convert`, `schema`
 
-- **npm:** `@etapsky/sdf-cli@0.3.0`
+- **npm:** `@etapsky/sdf-cli@0.3.2`
 - **Homebrew:** `brew install etapsky/tap/sdf`
 - **Binaries:** macOS (arm64, x64) · Linux (x64, arm64) — available on GitHub Releases
 - **Docs:** [sdf-cli reference](/sdf/sdf-cli/)
@@ -65,7 +65,7 @@ Commands: `inspect`, `validate`, `sign`, `verify`, `keygen`, `wrap`, `convert`, 
 | `diffSchemas()` | Detect breaking and non-breaking changes between versions |
 | `MigrationEngine` | Transform documents between schema versions |
 
-- **npm:** `@etapsky/sdf-schema-registry@0.1.0`
+- **npm:** `@etapsky/sdf-schema-registry@0.1.1`
 - **Docs:** [Schema Registry reference](/sdf/sdf-schema-registry/)
 
 #### sdf-server-core — Self-Hosted Server
@@ -79,7 +79,7 @@ Commands: `inspect`, `validate`, `sign`, `verify`, `keygen`, `wrap`, `convert`, 
 - SAP S/4HANA and Oracle Fusion Cloud ERP connectors
 - Append-only audit log
 
-- **npm:** `@etapsky/sdf-server-core@0.1.2`
+- **npm:** `@etapsky/sdf-server-core@0.1.6`
 - **Docs:** [SDF Server reference](/sdf/sdf-server/)
 
 #### Python SDK

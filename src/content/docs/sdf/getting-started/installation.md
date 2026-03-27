@@ -138,7 +138,7 @@ console.log(typeof buildSDF); // 'function'
 
 ```bash
 sdf --version
-# @etapsky/sdf-cli/0.3.0 darwin-arm64 node-v22.x.x
+# @etapsky/sdf-cli/0.3.2 darwin-arm64 node-v22.x.x
 ```
 
 **Python SDK:**

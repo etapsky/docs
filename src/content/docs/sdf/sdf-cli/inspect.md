@@ -29,7 +29,7 @@ sdf inspect invoice.sdf
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   inspect  invoice.sdf
 ────────────────────────────────────────────────────────────

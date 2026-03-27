@@ -32,7 +32,7 @@ sdf schema list
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   schema  list
 ────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ sdf schema versions invoice
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   schema  versions  invoice
 ────────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ sdf schema diff invoice v0.1 v0.2
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   schema  diff  invoice  v0.1 → v0.2
 ────────────────────────────────────────────────────────────
@@ -206,7 +206,7 @@ sdf schema validate data.json --schema invoice/v0.2
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   schema  validate  data.json
 ────────────────────────────────────────────────────────────

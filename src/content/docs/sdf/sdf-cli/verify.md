@@ -30,7 +30,7 @@ sdf verify invoice-signed.sdf --key keys/public.pem
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   verify  invoice-signed.sdf
 ────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ sdf verify tampered.sdf --key keys/public.pem
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   verify  tampered.sdf
 ────────────────────────────────────────────────────────────

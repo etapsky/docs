@@ -40,7 +40,7 @@ sdf keygen --algorithm ECDSA-P256 --out keys/
 ```
 
 ```
-  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.0
+  SDF — Smart Document Format  @etapsky/sdf-cli 0.3.2
 ────────────────────────────────────────────────────────────
   keygen
 ────────────────────────────────────────────────────────────
