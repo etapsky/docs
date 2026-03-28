@@ -6,6 +6,14 @@ import '../../styles/spec-pdf.css';
 <!doctype html>
 <html lang="en">
 <head>
+  <script is:inline>
+    (function () {
+      var root = document.documentElement;
+      var stored = localStorage.getItem('etapsky-theme');
+      var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', stored || system);
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SDF Format Specification v0.1 — Etapsky</title>
@@ -20,13 +28,14 @@ import '../../styles/spec-pdf.css';
   <!-- Print bar (hidden on print) -->
   <div class="print-bar">
     <div class="print-bar-left">
-      <img src="/fennec-fox.svg" alt="Etapsky" />
+      <img src="/fennec-fox.svg" class="fennec-logo" alt="Etapsky" />
       <div>
         <div class="print-bar-title">SDF Format Specification v0.1</div>
         <div class="print-bar-sub">Printable single-page edition</div>
       </div>
     </div>
     <div class="print-bar-actions">
+      <button type="button" id="theme-btn" aria-label="Toggle theme"></button>
       <a href="/sdf/spec/" class="btn btn-secondary">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         Back to docs
@@ -132,7 +141,7 @@ import '../../styles/spec-pdf.css';
       </div>
       <h3>Consumer Processing Order</h3>
       <p>Consumers <span class="must">MUST</span> process archive entries in this order:</p>
-      <ol style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ol style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li>Verify the file is a valid ZIP. If not: <span class="error-code">SDF_ERROR_NOT_ZIP</span>.</li>
         <li>Validate all entry paths (traversal check). If unsafe: <span class="error-code">SDF_ERROR_INVALID_ARCHIVE</span>.</li>
         <li>Check size limits. If exceeded: <span class="error-code">SDF_ERROR_ARCHIVE_TOO_LARGE</span>.</li>
@@ -198,7 +207,7 @@ import '../../styles/spec-pdf.css';
         <code>data.json</code> carries the structured business data of the document. Its schema is defined by the bundled <code>schema.json</code>. SDF makes no assumptions about the shape of business data — producers define the schema, and consumers validate against it.
       </p>
       <h3>Constraints</h3>
-      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li><code>data.json</code> <span class="must">MUST</span> validate against the bundled <code>schema.json</code> before the archive is written.</li>
         <li>Monetary amounts <span class="must">MUST</span> be represented as <code>{`{"amount": "string", "currency": "ISO4217"}`}</code>. Bare numeric values are prohibited.</li>
         <li>Dates <span class="must">MUST</span> be ISO 8601 strings. Numeric timestamps are not permitted.</li>
@@ -227,7 +236,7 @@ import '../../styles/spec-pdf.css';
         <code>schema.json</code> is a JSON Schema Draft 2020-12 document bundled inside the SDF archive. Every <code>.sdf</code> file is self-validating: it carries its own schema, enabling validation decades after creation without network access.
       </p>
       <h3>Rules</h3>
-      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li><code>schema.json</code> <span class="must">MUST</span> be valid JSON Schema Draft 2020-12. The <code>$schema</code> keyword <span class="must">MUST</span> be present and set to <code>"https://json-schema.org/draft/2020-12/schema"</code>.</li>
         <li>External <code>$ref</code> URIs <span class="must-not">MUST NOT</span> be used. All referenced sub-schemas <span class="must">MUST</span> be bundled inline using JSON Schema <code>$defs</code>.</li>
         <li>Consumers <span class="must-not">MUST NOT</span> fetch external resources during validation. Parsing and validation are offline operations.</li>
@@ -248,13 +257,13 @@ import '../../styles/spec-pdf.css';
         <code>visual.pdf</code> is the human-readable PDF layer. It is generated from <code>data.json</code> by the producer. It must be fully self-contained and security-safe.
       </p>
       <h3>Self-Containment</h3>
-      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li>All fonts <span class="must">MUST</span> be embedded. No system font references.</li>
         <li>All images and color profiles <span class="must">MUST</span> be embedded.</li>
         <li><span class="must-not">MUST NOT</span> reference any external resources by URL.</li>
       </ul>
       <h3>Security</h3>
-      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li>Producers <span class="must-not">MUST NOT</span> embed JavaScript, macros, or AcroForm scripts in <code>visual.pdf</code>.</li>
         <li>Consumers <span class="must-not">MUST NOT</span> execute any scripts found in <code>visual.pdf</code>.</li>
         <li>Consumers <span class="should">SHOULD</span> use a PDF renderer in a sandboxed environment.</li>
@@ -340,7 +349,7 @@ signature     = Sign(private_key, signing_input)</code></pre>
         The SDF version is declared in <code>meta.json</code> via the <code>sdf_version</code> field. The current version is <strong>0.1</strong>.
       </p>
       <h3>Version Negotiation</h3>
-      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
+      <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:var(--prose-body);line-height:2">
         <li>Consumers <span class="must">MUST</span> reject documents with an <code>sdf_version</code> higher than their supported version with <span class="error-code">SDF_ERROR_UNSUPPORTED_VERSION</span>.</li>
         <li>Consumers <span class="should">SHOULD</span> accept documents with a lower <code>sdf_version</code> (forward compatibility).</li>
         <li>Patch releases (e.g. 0.1.1) are backward-compatible. Minor releases (e.g. 0.2) may introduce new optional fields. Major releases (e.g. 1.0) may introduce breaking changes.</li>
@@ -407,5 +416,31 @@ signature     = Sign(private_key, signing_input)</code></pre>
 
   </div>
 
+  <script is:inline>
+    var MOON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var SUN = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+
+    function updateThemeIcon() {
+      var btn = document.getElementById('theme-btn');
+      if (!btn) return;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      btn.innerHTML = isDark ? MOON : SUN;
+      btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    function toggleSpecPdfTheme() {
+      var root = document.documentElement;
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('etapsky-theme', next);
+      updateThemeIcon();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('theme-btn');
+      if (btn) btn.addEventListener('click', toggleSpecPdfTheme);
+      updateThemeIcon();
+    });
+  </script>
 </body>
 </html>
