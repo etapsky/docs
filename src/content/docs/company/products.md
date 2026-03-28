@@ -130,4 +130,4 @@ You can use `sdf-kit` and `sdf-cli` entirely client-side without a server. The s
 
 Etapsky is building additional developer tools beyond SDF. These products are in active development and will be documented here upon public release.
 
-If you have a use case you would like to discuss before a product is available, reach out at hello@etapsky.com or open a discussion on [GitHub](https://github.com/etapsky/sdf/discussions).
+If you have a use case you would like to discuss before a product is available, reach out at hello@etapsky.com or open a discussion on [GitHub](https://github.com/orgs/etapsky/discussions).

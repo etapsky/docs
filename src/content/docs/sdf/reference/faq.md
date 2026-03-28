@@ -117,5 +117,5 @@ Key pairs are generated with `sdf keygen` (CLI) or `generateKeyPair()` (sdf-kit)
 ## Where can I get support?
 
 - **GitHub Issues:** [github.com/etapsky/sdf/issues](https://github.com/etapsky/sdf/issues) — bug reports, feature requests, and spec questions
-- **Discussions:** [github.com/etapsky/sdf/discussions](https://github.com/etapsky/sdf/discussions) — general questions and community
+- **Discussions:** [github.com/orgs/etapsky/discussions](https://github.com/orgs/etapsky/discussions) — general questions and community
 - **Enterprise support:** [etapsky.com](https://etapsky.com) — SLAs, dedicated support, and professional services
