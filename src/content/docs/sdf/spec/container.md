@@ -6,8 +6,6 @@ sidebar:
   order: 2
 ---
 
-# Container Format
-
 An SDF file is a valid ZIP archive with the `.sdf` extension.
 
 The `.sdf` extension is a content-type signal, not a structural one. Any tool that can open a ZIP archive can open an `.sdf` file. Renaming the file to `.zip` MUST produce a valid ZIP archive.

@@ -6,8 +6,6 @@ sidebar:
   order: 8
 ---
 
-# Validation
-
 SDF defines a mandatory validation pipeline that every consumer MUST execute before treating an archive as a conformant SDF document. The pipeline is ordered: later steps depend on earlier steps succeeding.
 
 ---

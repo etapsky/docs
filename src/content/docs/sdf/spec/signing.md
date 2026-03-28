@@ -6,8 +6,6 @@ sidebar:
   order: 7
 ---
 
-# Digital Signing
-
 SDF supports optional digital signatures via the `signature.sig` file. A signed SDF document provides cryptographic assurance that the four required layers (`visual.pdf`, `data.json`, `schema.json`, `meta.json`) have not been modified since signing.
 
 **Status:** Phase 4 feature. Signing is not required in v0.1 Phase 1–3 documents.

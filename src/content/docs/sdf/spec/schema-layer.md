@@ -6,8 +6,6 @@ sidebar:
   order: 5
 ---
 
-# schema.json — Schema Layer
-
 `schema.json` is a [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/release-notes) document bundled inside the SDF archive. It defines the expected structure, types, and constraints for `data.json`.
 
 ---

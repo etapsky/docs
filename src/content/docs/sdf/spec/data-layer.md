@@ -6,8 +6,6 @@ sidebar:
   order: 4
 ---
 
-# data.json — Data Layer
-
 `data.json` carries the structured business data of an SDF document. It is the machine-readable layer — the payload that receiving systems consume without OCR, without re-entry, and without parsing a PDF.
 
 `data.json` is intentionally separate from `meta.json`. SDF identity and provenance metadata evolves independently of business schemas. Invoice schemas, nomination schemas, and purchase order schemas can be versioned and evolved without touching the SDF meta schema.

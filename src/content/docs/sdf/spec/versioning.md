@@ -6,8 +6,6 @@ sidebar:
   order: 9
 ---
 
-# Versioning
-
 SDF uses a two-part version number in the form `major.minor` (e.g., `"0.1"`). The current version is **0.1**.
 
 ---

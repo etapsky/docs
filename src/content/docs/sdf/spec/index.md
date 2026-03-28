@@ -1,12 +1,10 @@
 ---
-title: "Format Specification"
+title: "SDF Format Specification"
 description: "The SDF Format Specification v0.1 — normative reference for producers and consumers of .sdf files."
 sidebar:
   label: "Overview"
   order: 1
 ---
-
-# SDF Format Specification
 
 **Status:** Draft v0.1
 **License:** [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) (specification text)

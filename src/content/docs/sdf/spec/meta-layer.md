@@ -6,8 +6,6 @@ sidebar:
   order: 3
 ---
 
-# meta.json — Identity Layer
-
 `meta.json` is the identity and provenance record of an SDF document. It answers the questions: what is this document, who issued it, and when was it created?
 
 `meta.json` is intentionally separate from `data.json`. SDF metadata evolves independently of business document schemas. A change to the SDF specification (e.g., adding a new meta field) does not require changes to invoice schemas, nomination schemas, or any other domain-specific schema.

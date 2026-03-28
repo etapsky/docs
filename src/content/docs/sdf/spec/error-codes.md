@@ -6,8 +6,6 @@ sidebar:
   order: 10
 ---
 
-# Error Codes
-
 SDF defines a set of standard error codes used consistently across all implementations — `sdf-kit`, `sdf-cli`, `sdf-server`, and the Python SDK. All errors produced by an SDF operation MUST use one of these codes.
 
 Do not invent new error codes. If a situation is not covered by the existing codes, open a GitHub issue on the [etapsky/sdf](https://github.com/etapsky/sdf) repository to propose a new code with spec section coverage.

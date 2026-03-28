@@ -6,8 +6,6 @@ sidebar:
   order: 6
 ---
 
-# visual.pdf — Visual Layer
-
 `visual.pdf` is the human-readable layer of an SDF document. It provides backward compatibility with existing PDF-based workflows — any system that can display a PDF can display the visual layer of an SDF document without SDF-specific tooling.
 
 ---
