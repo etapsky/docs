@@ -1,4 +1,5 @@
 ---
+import '../../styles/spec-pdf.css';
 // SDF Format Specification — Print / PDF view
 // Route: https://docs.etapsky.com/spec/pdf
 ---
@@ -13,360 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --fg: #0a0a0b;
-      --fg-muted: #6b7280;
-      --fg-subtle: #9ca3af;
-      --border: #e5e7eb;
-      --surface: #f9fafb;
-      --surface-2: #f3f4f6;
-      --amber: #d97706;
-      --purple: #7c3aed;
-      --code-bg: #1e1e2e;
-      --code-fg: #cdd6f4;
-      --accent: #7c3aed;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── PRINT BAR ─────────────────────────────────────────────── */
-    .print-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: 10px 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .print-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .print-bar img { width: 24px; height: 24px; }
-    .print-bar-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--fg);
-    }
-    .print-bar-sub {
-      font-size: 12px;
-      color: var(--fg-muted);
-    }
-    .print-bar-actions { display: flex; gap: 8px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-      transition: all 150ms;
-    }
-    .btn-primary {
-      background: var(--purple);
-      color: #fff;
-    }
-    .btn-primary:hover { background: #6d28d9; }
-    .btn-secondary {
-      background: var(--surface-2);
-      color: var(--fg);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover { background: var(--border); }
-
-    /* ── PAGE ──────────────────────────────────────────────────── */
-    .page {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3rem 2rem 6rem;
-    }
-
-    /* ── COVER ─────────────────────────────────────────────────── */
-    .cover {
-      padding: 3rem 0 3.5rem;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 3rem;
-    }
-    .cover-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--purple);
-      background: rgba(124,58,237,0.08);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 9999px;
-      padding: 4px 12px;
-      margin-bottom: 1.5rem;
-    }
-    .cover h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-    .cover h1 span { color: var(--purple); }
-    .cover-desc {
-      font-size: 1rem;
-      color: var(--fg-muted);
-      max-width: 600px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-    .cover-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .cover-meta-item { font-size: 13px; }
-    .cover-meta-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--fg-subtle);
-      margin-bottom: 2px;
-    }
-    .cover-meta-value { font-weight: 500; color: var(--fg); }
-    .cover-meta-value a { color: var(--purple); text-decoration: none; }
-    .cover-meta-value a:hover { text-decoration: underline; }
-
-    /* ── TOC ───────────────────────────────────────────────────── */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 3rem;
-    }
-    .toc-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--fg-subtle);
-      margin-bottom: 1rem;
-    }
-    .toc-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 2rem;
-    }
-    @media (max-width: 600px) { .toc-list { grid-template-columns: 1fr; } }
-    .toc-list li a {
-      font-size: 13px;
-      color: var(--fg-muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 3px 0;
-      transition: color 150ms;
-    }
-    .toc-list li a:hover { color: var(--purple); }
-    .toc-num {
-      font-size: 11px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--fg-subtle);
-      min-width: 20px;
-    }
-
-    /* ── SECTIONS ──────────────────────────────────────────────── */
-    .spec-section {
-      margin-bottom: 3.5rem;
-      padding-bottom: 3.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .spec-section:last-child { border-bottom: none; }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 1.5rem;
-    }
-    .section-num {
-      font-size: 13px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--fg-subtle);
-      min-width: 2rem;
-    }
-    h2 {
-      font-size: 1.375rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--fg);
-    }
-    h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--fg);
-      margin: 1.5rem 0 0.75rem;
-    }
-    p {
-      font-size: 0.9375rem;
-      color: #374151;
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-
-    /* ── TABLES ────────────────────────────────────────────────── */
-    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-    }
-    thead th {
-      text-align: left;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--fg-subtle);
-      padding: 8px 12px;
-      border-bottom: 2px solid var(--border);
-      background: var(--surface);
-    }
-    tbody td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      line-height: 1.5;
-    }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: var(--surface); }
-    code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1px 5px;
-      color: var(--purple);
-    }
-
-    /* ── CODE BLOCKS ───────────────────────────────────────────── */
-    pre {
-      background: var(--code-bg);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      overflow-x: auto;
-      margin: 1rem 0 1.5rem;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      color: var(--code-fg);
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    /* ── CALLOUTS ──────────────────────────────────────────────── */
-    .callout {
-      display: flex;
-      gap: 12px;
-      padding: 1rem 1.25rem;
-      border-radius: 10px;
-      margin: 1rem 0 1.5rem;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .callout-warn {
-      background: rgba(245,158,11,0.08);
-      border: 1px solid rgba(245,158,11,0.25);
-      color: #92400e;
-    }
-    .callout-info {
-      background: rgba(124,58,237,0.06);
-      border: 1px solid rgba(124,58,237,0.18);
-      color: #4c1d95;
-    }
-    .callout-icon { flex-shrink: 0; margin-top: 1px; }
-
-    /* ── MUST / MUST NOT tags ──────────────────────────────────── */
-    .must { font-weight: 700; color: #dc2626; }
-    .must-not { font-weight: 700; color: #7c3aed; }
-    .should { font-weight: 700; color: #d97706; }
-    .may { font-weight: 700; color: #059669; }
-
-    /* ── ERROR CODES ───────────────────────────────────────────── */
-    .error-code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
-      color: #dc2626;
-      background: rgba(220,38,38,0.07);
-      border: 1px solid rgba(220,38,38,0.15);
-      border-radius: 4px;
-      padding: 1px 6px;
-    }
-
-    /* ── FOOTER ────────────────────────────────────────────────── */
-    .spec-footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 2px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .spec-footer p { font-size: 12px; color: var(--fg-subtle); margin: 0; }
-    .spec-footer a { color: var(--purple); text-decoration: none; }
-
-    /* ── PRINT ─────────────────────────────────────────────────── */
-    @media print {
-      .print-bar { display: none; }
-      body { font-size: 11pt; }
-      .page { max-width: 100%; padding: 0; }
-      .cover { padding: 1.5rem 0 2rem; }
-      pre { break-inside: avoid; }
-      .spec-section { break-inside: avoid; }
-      h2 { break-after: avoid; }
-      h3 { break-after: avoid; }
-      @page {
-        margin: 2cm 2.5cm;
-        @bottom-center {
-          content: "SDF Format Specification v0.1 · etapsky.com · Page " counter(page) " of " counter(pages);
-          font-size: 9pt;
-          color: #9ca3af;
-        }
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -529,7 +176,7 @@
         <span class="callout-icon">ℹ</span>
         <strong>The document_id rule:</strong> <code>document_id</code> <span class="must">MUST</span> be a UUID v4 generated at produce time. It <span class="must-not">MUST NOT</span> be derived from any business identifier. Invoice numbers, PO numbers, and nomination references belong in <code>data.json</code>.
       </div>
-      <pre><code>{
+      <pre><code>{`{
   "sdf_version": "0.1",
   "document_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
   "document_type": "invoice",
@@ -538,7 +185,7 @@
   "created_at": "2026-03-15T14:30:00+01:00",
   "recipient": "Global Logistics AG",
   "locale": "de-DE"
-}</code></pre>
+}`}</code></pre>
     </section>
 
     <!-- ── §3 DATA.JSON ───────────────────────────────────────── -->
@@ -553,11 +200,11 @@
       <h3>Constraints</h3>
       <ul style="margin:0 0 1rem 1.5rem;font-size:0.9375rem;color:#374151;line-height:2">
         <li><code>data.json</code> <span class="must">MUST</span> validate against the bundled <code>schema.json</code> before the archive is written.</li>
-        <li>Monetary amounts <span class="must">MUST</span> be represented as <code>{"amount": "string", "currency": "ISO4217"}</code>. Bare numeric values are prohibited.</li>
+        <li>Monetary amounts <span class="must">MUST</span> be represented as <code>{`{"amount": "string", "currency": "ISO4217"}`}</code>. Bare numeric values are prohibited.</li>
         <li>Dates <span class="must">MUST</span> be ISO 8601 strings. Numeric timestamps are not permitted.</li>
         <li>SDF metadata fields (<code>sdf_version</code>, <code>document_id</code>) <span class="must-not">MUST NOT</span> appear in <code>data.json</code>.</li>
       </ul>
-      <pre><code>// Correct monetary amount
+      <pre><code>{`// Correct monetary amount
 { "amount": "1250.00", "currency": "EUR" }
 
 // Wrong — bare numeric value, precision loss risk
@@ -567,7 +214,7 @@
 { "issue_date": "2026-03-15" }
 
 // Wrong — numeric timestamp
-{ "issue_date": 1742169600 }</code></pre>
+{ "issue_date": 1742169600 }`}</code></pre>
     </section>
 
     <!-- ── §4 SCHEMA.JSON ─────────────────────────────────────── -->
@@ -639,12 +286,12 @@
 signature     = Sign(private_key, signing_input)</code></pre>
       <p>The concatenation order is deterministic and <span class="must">MUST NOT</span> vary between implementations. <code>signature.sig</code> itself and <code>vendor/*</code> entries are not included.</p>
       <h3>signature.sig Structure</h3>
-      <pre><code>{
+      <pre><code>{`{
   "algorithm": "ECDSA-P256",
   "key_id": "tenant-key-2026-03",
   "signature": "&lt;base64url-encoded signature bytes&gt;",
   "signed_at": "2026-03-15T14:30:05+01:00"
-}</code></pre>
+}`}</code></pre>
     </section>
 
     <!-- ── §7 VALIDATION ──────────────────────────────────────── -->
