@@ -31,7 +31,7 @@ html[data-theme="dark"] {
   --accent: #a78bfa;
 }
 
-html[data-theme="dark"] .fennec-logo {
+html[data-theme="dark"] .etapsky-mark-logo {
   filter: invert(1);
 }
 
@@ -401,7 +401,7 @@ html[data-theme="dark"] .error-code {
     --purple: #7c3aed !important;
     --accent: #7c3aed !important;
   }
-  html[data-theme="dark"] .fennec-logo {
+  html[data-theme="dark"] .etapsky-mark-logo {
     filter: none !important;
   }
   body { font-size: 11pt; }
