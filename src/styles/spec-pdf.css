@@ -31,10 +31,6 @@ html[data-theme="dark"] {
   --accent: #a78bfa;
 }
 
-html[data-theme="dark"] .etapsky-mark-logo {
-  filter: invert(1);
-}
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -400,9 +396,6 @@ html[data-theme="dark"] .error-code {
     --prose-body: #374151 !important;
     --purple: #7c3aed !important;
     --accent: #7c3aed !important;
-  }
-  html[data-theme="dark"] .etapsky-mark-logo {
-    filter: none !important;
   }
   body { font-size: 11pt; }
   .page { max-width: 100%; padding: 0; }
