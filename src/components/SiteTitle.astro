@@ -22,10 +22,10 @@
     loading="eager"
     decoding="async"
   />
-  <!-- Dark mode logo -->
+  <!-- Dark mode logo — wordmark #EADDBF in asset; no CSS filter -->
   <img
     class="etk-logo etk-logo--dark"
-    src="/etapsky_horizontal_logo.svg"
+    src="/etapsky_horizontal_logo_on_dark.svg"
     alt="Etapsky"
     height="40"
     loading="eager"
@@ -59,8 +59,8 @@
     object-position: left center;
   }
 
-  /* Default (dark): dark logo visible, inverted to #EADDBF */
-  :root:not([data-theme='light']) .etk-logo--dark  { display: block; filter: invert(1); }
+  /* Default (dark): light wordmark asset */
+  :root:not([data-theme='light']) .etk-logo--dark  { display: block; }
   :root:not([data-theme='light']) .etk-logo--light { display: none;  }
 
   /* Light mode: light logo visible, default #152240 */
